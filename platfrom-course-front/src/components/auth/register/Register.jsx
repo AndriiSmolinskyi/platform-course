@@ -1,8 +1,8 @@
-import { useContext } from "react";     
 import { Formik, Form, Field, ErrorMessage } from "formik";      
 import * as Yup from 'yup';
 import axios from 'axios';
 import { SHA512 } from 'crypto-js';
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -28,6 +28,7 @@ const validationSchema = Yup.object().shape({
 })
 
 export const Register = () =>{
+    const navigation = useNavigate()
 
     const RegisterFunction = async (values) => {
         const hashedPassword = SHA512(values.password).toString();
@@ -43,8 +44,8 @@ export const Register = () =>{
       
         try {
           const response = await axios.post("http://localhost:8080/api/user/register", body);
-          console.log(response.data);
           localStorage.setItem('userToken', response.data.token)
+          navigation('/')
         } catch (error) {
           console.error('Помилка при реєстрації:', error.response.data); // Змінено
         }
@@ -65,34 +66,35 @@ export const Register = () =>{
                 onSubmit={values =>{
                     RegisterFunction(values)
                 }}
+                className="formik"
             >
-                <Form>
-                    <div>
+                <Form className="form">
+                    <div className="input-block">
                         <label htmlFor="name" className="label">Імя:</label>
                         <Field type="text" id="name" name="name" className="input"/>
                         <ErrorMessage name="name" component="div" className="error"/>
                     </div>
-                    <div>
+                    <div className="input-block">
                         <label htmlFor="surname" className="label">Прізвище:</label>
                         <Field type="text" id="surname" name="surname" className="input"/>
                         <ErrorMessage name="surname" component="div" className="error"/>
                     </div>
-                    <div>
+                    <div className="input-block">
                         <label htmlFor="email" className="label">Пошта:</label>
                         <Field type="email" id="email" name="email" className="input"/>
                         <ErrorMessage name="email" component="div"className="error"/>
                     </div>
-                    <div>
+                    <div className="input-block">
                         <label htmlFor="password" className="label">Пароль:</label>
                         <Field type="password" id="password" name="password" className="input"/>
                         <ErrorMessage name="password" component="div" className="error"/>
                     </div>
-                    <div>
+                    <div className="input-block">
                         <label htmlFor="confirmPassword" className="label">Повторити пароль:</label>
                         <Field type="password" id="confirmPassword" name="confirmPassword" className="input"/>
                         <ErrorMessage name="confirmPassword" component="div" className="error"/>
                     </div>
-                    <button type="submit">Зареєструватись</button>
+                    <button type="submit" className="input-block">Зареєструватись</button>
                 </Form>
             </Formik>
         </div>    

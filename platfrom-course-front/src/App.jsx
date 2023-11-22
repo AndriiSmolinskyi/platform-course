@@ -1,4 +1,3 @@
-import { Lesson } from './components/lessons/Lesson';
 import { Routes, Route } from 'react-router-dom';
 import { Register } from './components/auth/register/Register';
 import { Login } from './components/auth/login/Login';

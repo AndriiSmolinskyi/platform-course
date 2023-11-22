@@ -1,4 +1,3 @@
-import { useContext } from "react";     
 import { Formik, Form, Field, ErrorMessage } from "formik";      
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -6,8 +5,6 @@ import { SHA512 } from 'crypto-js';
 import { useNavigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
-    
-
     email: Yup.string()
         .email('Неправильний формат Email')
         .required('Пошта є обовязковим полем'),
@@ -35,12 +32,11 @@ export const Login = () =>{
       
         try {
           const response = await axios.post("http://localhost:8080/api/user/login", body);
-          console.log(response.data);
-          const token = response.data.user.token
+          const token = response.data.token
           localStorage.setItem('userToken', token)
           navigation('/')
         } catch (error) {
-          console.error('Помилка при авторизації:', error.response.data); // Змінено
+          console.error('Помилка при авторизації:', error.response.data); 
         }
     };
 
@@ -57,19 +53,20 @@ export const Login = () =>{
                 onSubmit={values =>{
                     LoginFunction(values)
                 }}
+                className="formik"
             >
-                <Form>
-                    <div>
+                <Form className="form">
+                    <div className="input-block">
                         <label htmlFor="email" className="label">Пошта:</label>
                         <Field type="email" id="email" name="email" className="input"/>
                         <ErrorMessage name="email" component="div"className="error"/>
                     </div>
-                    <div>
+                    <div className="input-block">
                         <label htmlFor="password" className="label">Пароль:</label>
                         <Field type="password" id="password" name="password" className="input"/>
                         <ErrorMessage name="password" component="div" className="error"/>
                     </div>
-                    <div>
+                    <div className="input-block">
                         <label htmlFor="confirmPassword" className="label">Повторити пароль:</label>
                         <Field type="password" id="confirmPassword" name="confirmPassword" className="input"/>
                         <ErrorMessage name="confirmPassword" component="div" className="error"/>

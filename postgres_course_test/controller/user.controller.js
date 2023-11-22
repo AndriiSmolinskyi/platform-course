@@ -106,13 +106,13 @@ class UserConroller{
             } else {
                 const token = uuid.v4(); // Генерація токена
     
-                const newPerson = await db.query(`
+                const user = await db.query(`
                     INSERT INTO users (name, surname, role, email, group_id, password, token)
                     VALUES ($1, $2, $3, $4, $5, $6, $7)
                     RETURNING *
                 `, [name, surname, role, email, group_id, password, token]);
     
-                res.json(newPerson.rows[0]);
+                res.json({token: user.rows[0].token});
             }
         } catch (error) {
             console.error("Error creating user:", error);
@@ -125,7 +125,7 @@ class UserConroller{
         try {
             const user = await db.query('SELECT * FROM users WHERE email = $1', [email]);
             if (user.rows.length > 0 && user.rows[0].password === password) {
-                res.json({ message: 'Login successful', user: user.rows[0] });
+                res.json({ message: 'Login successful', token: user.rows[0].token });
             } else {
                 res.status(401).json({ error: 'Invalid credentials' });
             }
@@ -135,27 +135,49 @@ class UserConroller{
         }
     }
 
+    // async autoLogin(req, res) {
+    //     const { token } = req.body;
+    
+    //     try {
+    //         const userIdResult = await db.query('SELECT id FROM users WHERE token = $1', [token]);
+    //         const userId = userIdResult.rows[0].id;
+    
+    //         const newToken = uuid.v4();
+    
+    //         await db.query('UPDATE users SET token = $1 WHERE id = $2', [newToken, userId]);
+    
+    //         const user = await db.query('SELECT id, name, surname, role, email, group_id, token FROM users WHERE id = $1', [userId]);
+    //         res.json(user.rows[0]);
+    //     } catch (error) {
+    //         console.error("Error during auto login:", error);
+    //         res.status(500).json({ error: "Internal Server Error" });
+    //     }
+    // }
+
     async autoLogin(req, res) {
         const { token } = req.body;
     
         try {
             const userIdResult = await db.query('SELECT id FROM users WHERE token = $1', [token]);
+    
+            // Перевірка, чи є результати запиту
+            if (userIdResult.rows.length === 0) {
+                return res.status(401).json({ error: 'Invalid token' });
+            }
+    
             const userId = userIdResult.rows[0].id;
     
             const newToken = uuid.v4();
     
-            // Оновлення токену в базі даних за допомогою id користувача
-            const user = await db.query('UPDATE users SET token = $1 WHERE id = $2', [newToken, userId]);
+            await db.query('UPDATE users SET token = $1 WHERE id = $2', [newToken, userId]);
     
-            // Повернення нового токену та інформації про користувача
+            const user = await db.query('SELECT id, name, surname, role, email, group_id, token FROM users WHERE id = $1', [userId]);
             res.json(user.rows[0]);
         } catch (error) {
             console.error("Error during auto login:", error);
-            // Важливо також повідомити клієнта про помилку у відповіді
             res.status(500).json({ error: "Internal Server Error" });
         }
     }
-    
 
     async getOneUser(req, res){
         const id = req.params.id
