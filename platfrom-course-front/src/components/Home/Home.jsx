@@ -5,10 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 import Lesson from "../lessons/Lesson";
 import axios from 'axios';
+import { Loading } from "../Loading/Loading";
+import { useState } from "react";
 
 export const Home = () => {
     const { user } = useContext(UserContext)
     const { group, setGroup } = useContext(GroupContext)
+    const [ loading, setLoading ] = useState(false)
     const navigate = useNavigate();
 
     const getGroup = async () => {
@@ -35,9 +38,7 @@ export const Home = () => {
     return(
         <div>
             {user && (
-                <>
-                    <Lesson />
-                </>
+               <Lesson></Lesson>
             )}
         </div>    
     )

@@ -1,0 +1,15 @@
+@keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .loader {
+    border: 8px solid #f3f3f3; /* Якщо ви хочете змінити колір, змініть це значення */
+    border-top: 8px solid #3498db; /* Якщо ви хочете змінити колір, змініть це значення */
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
