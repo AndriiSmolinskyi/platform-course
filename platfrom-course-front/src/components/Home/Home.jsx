@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { GroupContext } from "../../Context/GroupContext";
 import { UserContext } from "../../Context/UserContext"
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
@@ -7,37 +8,34 @@ import axios from 'axios';
 
 export const Home = () => {
     const { user } = useContext(UserContext)
+    const { group, setGroup } = useContext(GroupContext)
     const navigate = useNavigate();
 
     const getGroup = async () => {
+        const group_id = user.group_id
         try {
-            const response = await axios.get("http://localhost:8080/api/user/getOneGroup", {
-                params: { group_id: user.group_id }
-            });
-            console.log(response);
+            
+            const response = await axios.get(`http://localhost:8080/api/user/getOneGroup/${group_id}`
+            );
+            const groupData = response.data
+            setGroup(groupData)
         } catch (error) {
             console.error('Помилка при отриманні групи:', error.response); 
         }
     };
     
-    useEffect(() => {     
-       
+    useEffect(() => {        
         if (!user) {
             navigate('/');
         } else {
             getGroup();
         }
-        
-    
-     
     }, [user, navigate]);
 
     return(
         <div>
             {user && (
                 <>
-                    {user.name}
-                    {user.surname}
                     <Lesson />
                 </>
             )}

@@ -31,7 +31,7 @@ class UserConroller{
     }
 
     async getOneGroup(req, res){
-        const {group_id} = req.body
+        const group_id = req.params.group_id
         const group = await db.query('SELECT * FROM groups WHERE id = $1', [group_id]);
         res.json(group.rows[0])
     }

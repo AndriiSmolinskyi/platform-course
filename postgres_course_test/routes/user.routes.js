@@ -29,6 +29,6 @@ router.put('/user/autoLogin', userController.autoLogin);
 
 router.get('/user/getOneUser/:id', userController.getOneUser);
 router.put('/user/update', userController.updateUserAdmin);
-router.get('/user/getOneGroup', userController.getOneGroup);
+router.get('/user/getOneGroup/:group_id', userController.getOneGroup);
 
 module.exports = router;
