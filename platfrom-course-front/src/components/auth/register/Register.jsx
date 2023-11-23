@@ -3,6 +3,9 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { SHA512 } from 'crypto-js';
 import { useNavigate } from "react-router-dom";
+import "../Auth.scss";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -20,7 +23,7 @@ const validationSchema = Yup.object().shape({
         .min(7, 'Мінімум 7 символів')
         .max(22, 'Не більше 22 символів')
         .matches(/[0-9]/, 'Повинен містити цифру')
-        .matches(/[a-zA-Z]/, 'Повинен містити букву')
+        .matches(/[a-zA-Z]/, 'Повинен містити латинську букву')
         .required('Введіть пароль'),
     confirmPassword: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Паролі повинні збігатися')
@@ -51,9 +54,13 @@ export const Register = () =>{
         }
     };
 
+    const GoBack = () => {
+        navigation('/')
+    }
+
     return(
-        <div>
-            <h1>Реєстрація</h1>
+        <div className="auth">
+            
             <Formik
                 initialValues={{
                     name: '',
@@ -69,6 +76,10 @@ export const Register = () =>{
                 className="formik"
             >
                 <Form className="form">
+                    <div className="form__head">
+                        <FontAwesomeIcon icon={faArrowLeft} className="arrow" onClick={GoBack}/>
+                        <h1 className="auth__title">Реєстрація</h1>
+                    </div>
                     <div className="input-block">
                         <label htmlFor="name" className="label">Імя:</label>
                         <Field type="text" id="name" name="name" className="input"/>
@@ -94,7 +105,7 @@ export const Register = () =>{
                         <Field type="password" id="confirmPassword" name="confirmPassword" className="input"/>
                         <ErrorMessage name="confirmPassword" component="div" className="error"/>
                     </div>
-                    <button type="submit" className="input-block">Зареєструватись</button>
+                    <button type="submit" className="form__btn">Зареєструватись</button>
                 </Form>
             </Formik>
         </div>    

@@ -48,3 +48,14 @@ table {
 *{
     box-sizing: border-box;
 }
+
+
+a {
+    text-decoration: none; /* Забирає підкреслення */
+    color: inherit; /* Використовує колір, визначений для батьківського елемента */
+    cursor: pointer; /* Змінює курсор на покажчик для вказівника */
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }

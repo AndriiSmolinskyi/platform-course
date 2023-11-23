@@ -3,6 +3,9 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { SHA512 } from 'crypto-js';
 import { useNavigate } from "react-router-dom";
+import "../Auth.scss";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -11,7 +14,7 @@ const validationSchema = Yup.object().shape({
     password: Yup.string()
         .min(7, 'Мінімум 7 символів')
         .max(22, 'Не більше 22 символів')
-        .matches(/[0-9]/, 'Повинен містити цифру')
+        .matches(/[0-9]/, 'Повинен містити латинську цифру')
         .matches(/[a-zA-Z]/, 'Повинен містити букву')
         .required('Введіть пароль'),
     confirmPassword: Yup.string()
@@ -40,9 +43,13 @@ export const Login = () =>{
         }
     };
 
+    const GoBack = () => {
+        navigation('/')
+    }
+
     return(
-        <div>
-            <h1>Авторизація</h1>
+        <div className="auth">
+            
             <Formik
                 initialValues={{
                     email: '',
@@ -56,10 +63,14 @@ export const Login = () =>{
                 className="formik"
             >
                 <Form className="form">
+                    <div className="form__head">
+                        <FontAwesomeIcon icon={faArrowLeft} className="arrow" onClick={GoBack}/>
+                        <h1 className="auth__title">Авторизація</h1>
+                    </div>
                     <div className="input-block">
                         <label htmlFor="email" className="label">Пошта:</label>
                         <Field type="email" id="email" name="email" className="input"/>
-                        <ErrorMessage name="email" component="div"className="error"/>
+                        <ErrorMessage name="email" component="div" className="error"/>
                     </div>
                     <div className="input-block">
                         <label htmlFor="password" className="label">Пароль:</label>
@@ -71,7 +82,7 @@ export const Login = () =>{
                         <Field type="password" id="confirmPassword" name="confirmPassword" className="input"/>
                         <ErrorMessage name="confirmPassword" component="div" className="error"/>
                     </div>
-                    <button type="submit">Увійти</button>
+                    <button type="submit" className="form__btn">Ввійти</button>
                 </Form>
             </Formik>
         </div>    

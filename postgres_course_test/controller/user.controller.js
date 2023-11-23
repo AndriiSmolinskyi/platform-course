@@ -30,6 +30,12 @@ class UserConroller{
         res.json(group.rows)
     }
 
+    async getOneGroup(req, res){
+        const {group_id} = req.body
+        const group = await db.query('SELECT * FROM groups WHERE id = $1', [group_id]);
+        res.json(group.rows[0])
+    }
+
 
     async updateUserAdmin(req, res) {
         const { id, name, surname, role, email, group_id, password } = req.body;
