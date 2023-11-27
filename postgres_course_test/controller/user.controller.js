@@ -141,25 +141,6 @@ class UserConroller{
         }
     }
 
-    // async autoLogin(req, res) {
-    //     const { token } = req.body;
-    
-    //     try {
-    //         const userIdResult = await db.query('SELECT id FROM users WHERE token = $1', [token]);
-    //         const userId = userIdResult.rows[0].id;
-    
-    //         const newToken = uuid.v4();
-    
-    //         await db.query('UPDATE users SET token = $1 WHERE id = $2', [newToken, userId]);
-    
-    //         const user = await db.query('SELECT id, name, surname, role, email, group_id, token FROM users WHERE id = $1', [userId]);
-    //         res.json(user.rows[0]);
-    //     } catch (error) {
-    //         console.error("Error during auto login:", error);
-    //         res.status(500).json({ error: "Internal Server Error" });
-    //     }
-    // }
-
     async autoLogin(req, res) {
         const { token } = req.body;
     
