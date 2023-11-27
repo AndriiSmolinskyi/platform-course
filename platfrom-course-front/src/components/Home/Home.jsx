@@ -15,13 +15,15 @@ export const Home = () => {
     const navigate = useNavigate();
 
     const getGroup = async () => {
-        const group_id = user.group_id
+        const user_id = user.id
         try {
             
-            const response = await axios.get(`http://localhost:8080/api/user/getOneGroup/${group_id}`
+            const response = await axios.get(`http://localhost:8080/api/user/getUsersGroups/${user_id}`
             );
             const groupData = response.data
+            console.log(response.data)
             setGroup(groupData)
+            setLoading(true)
         } catch (error) {
             console.error('Помилка при отриманні групи:', error.response); 
         }
@@ -35,11 +37,31 @@ export const Home = () => {
         }
     }, [user, navigate]);
 
-    return(
-        <div>
-            {user && (
-               <Lesson></Lesson>
-            )}
-        </div>    
-    )
+
+    const getGroupData = async () => {
+        try {
+            const group_id = 1
+            const response = await axios.get(`http://localhost:8080/api/user/getOneGroup/${group_id}`
+            );
+            console.log(response.data)
+        } catch (error) {
+            console.error('Помилка при отриманні групи:', error.response); 
+        }
+        
+    }
+
+    if (loading === true) {
+        return (
+            <div>
+                {group.map((groupItem, index) => (
+                    <div key={index}>{groupItem.user_id} {groupItem.group_id}</div>
+                ))}
+                
+                <Lesson></Lesson>
+            </div>
+        );
+    } else {
+        return <Loading></Loading>;
+    }
+
 }

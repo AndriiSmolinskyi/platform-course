@@ -41,7 +41,6 @@ export const Register = () =>{
           surname: values.surname,
           role: 'student',
           email: values.email,
-          group_id: null,
           password: hashedPassword,
         };
       

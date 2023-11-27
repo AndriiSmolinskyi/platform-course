@@ -36,9 +36,24 @@ class UserConroller{
         res.json(group.rows[0])
     }
 
+    async addUserToGroup(req, res){
+        const {user_id, group_id} = req.body
+        const groupPush = await db.query('INSERT INTO user_groups(user_id, group_id) VALUES($1, $2)', [user_id, group_id]);
+        res.json('Успішно додано до групи')
+    }
+
+    async getUsersGroups(req, res){
+        const id = req.params.id
+        const userGroups = await db.query('SELECT * FROM user_groups WHERE user_id = $1', [id]);
+        res.json(userGroups.rows)
+    }
+
+
+
+
 
     async updateUserAdmin(req, res) {
-        const { id, name, surname, role, email, group_id, password } = req.body;
+        const { id, name, surname, role, email,  password } = req.body;
     
         let updateFields = [];
         let values = [];
@@ -56,7 +71,6 @@ class UserConroller{
         addUpdateField('surname', surname);
         addUpdateField('role', role);
         addUpdateField('email', email);
-        addUpdateField('group_id', group_id);
         addUpdateField('password', password);
     
         if (values.length === 0) {
@@ -101,7 +115,7 @@ class UserConroller{
     //user auth
 
     async createUser(req, res) {
-        const { name, surname, role, email, group_id, password } = req.body;
+        const { name, surname, role, email, password } = req.body;
     
         try {
             // Перевірка, чи email вже існує в базі даних
@@ -113,10 +127,10 @@ class UserConroller{
                 const token = uuid.v4(); // Генерація токена
     
                 const user = await db.query(`
-                    INSERT INTO users (name, surname, role, email, group_id, password, token)
-                    VALUES ($1, $2, $3, $4, $5, $6, $7)
+                    INSERT INTO users (name, surname, role, email,  password, token)
+                    VALUES ($1, $2, $3, $4, $5, $6 )
                     RETURNING *
-                `, [name, surname, role, email, group_id, password, token]);
+                `, [name, surname, role, email, password, token]);
     
                 res.json({token: user.rows[0].token});
             }
@@ -158,7 +172,7 @@ class UserConroller{
     
             await db.query('UPDATE users SET token = $1 WHERE id = $2', [newToken, userId]);
     
-            const user = await db.query('SELECT id, name, surname, role, email, group_id, token FROM users WHERE id = $1', [userId]);
+            const user = await db.query('SELECT id, name, surname, role, email, token FROM users WHERE id = $1', [userId]);
             res.json(user.rows[0]);
         } catch (error) {
             console.error("Error during auto login:", error);

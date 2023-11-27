@@ -57,8 +57,4 @@ export const Start = () =>{
             </div>
       
         )
-    
-        
-                                              
-    
 }

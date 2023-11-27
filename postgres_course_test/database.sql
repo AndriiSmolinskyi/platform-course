@@ -10,9 +10,14 @@ CREATE TABLE users (
     surname VARCHAR(255),
     role VARCHAR(255),
     email VARCHAR(255),
-    group_id INTEGER REFERENCES groups(id),
     password VARCHAR(255),
     token VARCHAR(255)
+);
+
+CREATE TABLE user_groups (
+    user_id INTEGER REFERENCES users(id),
+    group_id INTEGER REFERENCES groups(id),
+    PRIMARY KEY (user_id, group_id)
 );
 
 CREATE TABLE homework (
