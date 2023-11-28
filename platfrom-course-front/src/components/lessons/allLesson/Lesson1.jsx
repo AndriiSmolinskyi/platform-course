@@ -1,7 +1,7 @@
 import "./Lesson.scss";
 import { LessonBtn } from "./LessonBtn";
 
-export const Lesson1 = ( {hmId, group_id} ) => {
+export const Lesson1 = ( {hmId, groupId} ) => {
 
 
     return(
@@ -66,7 +66,7 @@ export const Lesson1 = ( {hmId, group_id} ) => {
                     </div>                         
                 </div>
             </div>
-            <LessonBtn hmId={hmId} group_id={group_id}></LessonBtn>
+            <LessonBtn hmId={hmId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

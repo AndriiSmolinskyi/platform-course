@@ -10,7 +10,7 @@ app.use(cors({
     origin: 'http://localhost:3000',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
-    optionsSuccessStatus: 204, // Для успіху OPTIONS запросов
+    optionsSuccessStatus: 204,
 }));
 
 app.use(express.json())

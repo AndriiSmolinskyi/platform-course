@@ -139,7 +139,7 @@ export const Lesson = (  ) => {
             <div className="lesson-content">
                 {selectedLesson <= visibleLessons.length && (
                     <div>
-                        {selectedLesson === 1 && <Lesson1 hmId={1} group_id={currentGroup}/>}
+                        {selectedLesson === 1 && <Lesson1 hmId={1} groupId={currentGroup}/>}
                         {selectedLesson === 2 && <Lesson2 hmId={2}/>}
                         {selectedLesson === 3 && <Lesson3 />}
                         {selectedLesson === 4 && <Lesson4 />}
