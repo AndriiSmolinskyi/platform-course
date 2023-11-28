@@ -37,26 +37,9 @@ export const Home = () => {
         }
     }, [user, navigate]);
 
-
-    const getGroupData = async () => {
-        try {
-            const group_id = 1
-            const response = await axios.get(`http://localhost:8080/api/user/getOneGroup/${group_id}`
-            );
-            console.log(response.data)
-        } catch (error) {
-            console.error('Помилка при отриманні групи:', error.response); 
-        }
-        
-    }
-
     if (loading === true) {
         return (
             <div>
-                {group.map((groupItem, index) => (
-                    <div key={index}>{groupItem.user_id} {groupItem.group_id}</div>
-                ))}
-                
                 <Lesson></Lesson>
             </div>
         );

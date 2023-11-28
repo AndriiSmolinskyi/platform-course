@@ -42,12 +42,21 @@ class UserConroller{
         res.json('Успішно додано до групи')
     }
 
-    async getUsersGroups(req, res){
-        const id = req.params.id
-        const userGroups = await db.query('SELECT * FROM user_groups WHERE user_id = $1', [id]);
-        res.json(userGroups.rows)
+    async getUsersGroups(req, res) {
+        const id = req.params.id;
+    
+        try {
+            const userGroups = await db.query(
+                'SELECT user_groups.*, groups.name_group, groups.available_lessons FROM user_groups JOIN groups ON user_groups.group_id = groups.id WHERE user_id = $1',
+                [id]
+            );
+    
+            res.json(userGroups.rows);
+        } catch (error) {
+            console.error('Помилка при отриманні груп користувача:', error);
+            res.status(500).json({ error: 'Помилка сервера' });
+        }
     }
-
 
 
 

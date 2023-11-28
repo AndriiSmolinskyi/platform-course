@@ -42,10 +42,25 @@ import Lesson39 from "./allLesson/Lesson39";
 import Lesson40 from "./allLesson/Lesson40";
 import Lesson41 from "./allLesson/Lesson41";
 import Lesson42 from "./allLesson/Lesson42";
+import { useContext } from "react";
+import { GroupContext } from "../../Context/GroupContext";
+import { UserContext } from "../../Context/UserContext"
 
-export const Lesson = () => {
-    const [selectedLesson, setSelectedLesson] = useState(1);
-    const count = 42;
+export const Lesson = (  ) => {
+    const { user } = useContext(UserContext)
+    const { group, setGroup } = useContext(GroupContext)
+    const [ count, setCount ] = useState(group[0].available_lessons)  //доступні уроки
+    const [ selectedLesson, setSelectedLesson ] = useState(1); //вибраний урок    
+    const [ select, setSelect ] = useState(false); //стан випадайки 
+
+    const handleCheckGroup = (availableLessons) => {
+        setCount(availableLessons);
+        setSelect(!select)
+    };
+
+    const handleDropcourse = () => {
+        setSelect(!select)
+    }
 
     const lessons = [
         "Вступний урок.",
@@ -96,12 +111,26 @@ export const Lesson = () => {
 
     return (
         <div className="lesson-main">
+
             <ul className="lesson-list">
+                <h2 onClick={handleDropcourse} className="drop__h2">Мій курс</h2>
+                {select && group.map((groupItem, index) => (
+                    <li
+                        key={index} 
+                        className="lesson-list__item" 
+                        onClick={() => handleCheckGroup(groupItem.available_lessons)}
+                    >
+                        {groupItem.name_group} {groupItem.available_lessons}
+                    </li>
+                ))}
+
+
                 {visibleLessons.map((lesson, index) => (
                     <li key={index} onClick={() => setSelectedLesson(index + 1)} className="lesson-list__item">
                         {`${index + 1}. ${lesson}`}
                     </li>
                 ))}
+
             </ul>
             <div className="lesson-content">
                 {selectedLesson <= visibleLessons.length && (
