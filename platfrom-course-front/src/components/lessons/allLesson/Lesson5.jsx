@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 
 const Lesson5 = () => {
     return (

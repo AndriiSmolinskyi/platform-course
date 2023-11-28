@@ -3,7 +3,7 @@ const db = require('../db')
 class PostController{
    
     async sendHomework(req, res){
-        const { user_id, group_id, lesson_number, content, status } = req.body;
+        const { user_id, group_id, lesson_number, content } = req.body;
         const newHome = await db.query('INSERT INTO homework (user_id, group_id, lesson_number, content, status) VALUES ($1, $2, $3, $4, $5) RETURNING *', [user_id, group_id, lesson_number, content, status ])
         res.json(newHome.rows[0])
     }

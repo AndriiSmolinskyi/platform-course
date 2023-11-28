@@ -1,7 +1,8 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 
-export const Lesson1 = () => {
+export const Lesson1 = ( {hmId, group_id} ) => {
+
 
     return(
         <div className="lesson-block">
@@ -62,10 +63,10 @@ export const Lesson1 = () => {
                         <p className="content__paragraph">3. Завантажити та знайомитись з VS Code.</p>
                         <p className="content__paragraph">4. Надіслати в домашнє завдання маленьке есе про себе( хто я, де живу, цілі, уподобання, чому фронтенд і айті, імя і так далі, минулий досвід ).</p>
                         <a className="link" target="blank" href="https://www.youtube.com/watch?v=-h9sgYfCz14&ab_channel=AroundBlender3D">5. Завантажити плагін для Vs Code live server.</a>
-                    </div>                   
-                    <LessonBtn></LessonBtn>
+                    </div>                         
                 </div>
             </div>
+            <LessonBtn hmId={hmId} group_id={group_id}></LessonBtn>
         </div>    
     )
 }

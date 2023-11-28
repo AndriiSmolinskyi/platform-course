@@ -45,6 +45,8 @@ import Lesson42 from "./allLesson/Lesson42";
 import { useContext } from "react";
 import { GroupContext } from "../../Context/GroupContext";
 import { UserContext } from "../../Context/UserContext"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 export const Lesson = (  ) => {
     const { user } = useContext(UserContext)
@@ -52,9 +54,11 @@ export const Lesson = (  ) => {
     const [ count, setCount ] = useState(group[0].available_lessons)  //доступні уроки
     const [ selectedLesson, setSelectedLesson ] = useState(1); //вибраний урок    
     const [ select, setSelect ] = useState(false); //стан випадайки 
+    const [ currentGroup, setCurrentGroup] = useState(group[0].group_id)
 
-    const handleCheckGroup = (availableLessons) => {
+    const handleCheckGroup = (availableLessons, group_id) => {
         setCount(availableLessons);
+        setCurrentGroup(group_id)
         setSelect(!select)
     };
 
@@ -113,12 +117,12 @@ export const Lesson = (  ) => {
         <div className="lesson-main">
 
             <ul className="lesson-list">
-                <h2 onClick={handleDropcourse} className="drop__h2">Мій курс</h2>
+                <h2 onClick={handleDropcourse} className="drop__h2">Мій курс <FontAwesomeIcon icon={faArrowDown} /></h2>
                 {select && group.map((groupItem, index) => (
                     <li
                         key={index} 
                         className="lesson-list__item" 
-                        onClick={() => handleCheckGroup(groupItem.available_lessons)}
+                        onClick={() => handleCheckGroup(groupItem.available_lessons, groupItem.group_id)}
                     >
                         {groupItem.name_group} {groupItem.available_lessons}
                     </li>
@@ -135,8 +139,8 @@ export const Lesson = (  ) => {
             <div className="lesson-content">
                 {selectedLesson <= visibleLessons.length && (
                     <div>
-                        {selectedLesson === 1 && <Lesson1 />}
-                        {selectedLesson === 2 && <Lesson2 />}
+                        {selectedLesson === 1 && <Lesson1 hmId={1} group_id={currentGroup}/>}
+                        {selectedLesson === 2 && <Lesson2 hmId={2}/>}
                         {selectedLesson === 3 && <Lesson3 />}
                         {selectedLesson === 4 && <Lesson4 />}
                         {selectedLesson === 5 && <Lesson5 />}

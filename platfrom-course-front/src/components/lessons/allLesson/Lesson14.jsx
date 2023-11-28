@@ -1,5 +1,5 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import example1 from "./Lesson14_img/example1.png"
 
 export const Lesson14 = () => {

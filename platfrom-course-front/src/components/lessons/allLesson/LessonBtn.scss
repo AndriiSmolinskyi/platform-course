@@ -1,0 +1,23 @@
+.button{
+    width: 170px;
+    height: 40px;
+    background-color: rgb(146, 231, 109);
+    border-radius: 20px;
+    border: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+textarea {
+    border: 2px solid lightgray; /* Товщина та стиль рамки */
+    transition: border-color 0.3s ease; /* Плавний перехід для ефекту фокусу */
+    resize: none;
+}
+  
+textarea:focus {
+    border-color: rgb(146, 231, 109);
+    outline: none;
+}

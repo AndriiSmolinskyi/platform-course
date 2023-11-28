@@ -1,5 +1,5 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import justify from './Lesson9__img/justify.png'
 import align from './Lesson9__img/align.webp'
 

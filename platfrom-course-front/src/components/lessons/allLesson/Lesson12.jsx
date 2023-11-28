@@ -1,5 +1,5 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import first from "./Lesson12_img/first.png"
 import second from "./Lesson12_img/second.png"
 import third from "./Lesson12_img/third.png"
