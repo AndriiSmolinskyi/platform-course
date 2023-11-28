@@ -44,8 +44,9 @@ import Lesson41 from "./allLesson/Lesson41";
 import Lesson42 from "./allLesson/Lesson42";
 
 export const Lesson = () => {
-
     const [selectedLesson, setSelectedLesson] = useState(1);
+
+    const count = 5
 
     return(
         <div className="lesson-main">
