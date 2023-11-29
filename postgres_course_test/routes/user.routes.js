@@ -33,4 +33,5 @@ router.put('/user/update', userController.updateUserAdmin);
 router.get('/user/getOneGroup/:group_id', userController.getOneGroup);
 router.get('/user/getUsersGroups/:id', userController.getUsersGroups);
 
+
 module.exports = router;

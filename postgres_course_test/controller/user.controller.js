@@ -195,6 +195,7 @@ class UserConroller{
         res.json(user.rows[0]);
     }
 
+
 }
 
 module.exports = new UserConroller()

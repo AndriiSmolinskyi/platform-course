@@ -4,7 +4,7 @@ class PostController{
    
     async sendHomework(req, res){
         const { user_id, group_id, lesson_number, content } = req.body;
-        const newHome = await db.query('INSERT INTO homework (user_id, group_id, lesson_number, content) VALUES ($1, $2, $3, $4, $5) RETURNING *', [user_id, group_id, lesson_number, content])
+        const newHome = await db.query('INSERT INTO homework (user_id, group_id, lesson_number, content) VALUES ($1, $2, $3, $4) RETURNING *', [user_id, group_id, lesson_number, content])
         res.json(newHome.rows)
     }
 
@@ -13,7 +13,7 @@ class PostController{
     
         try {
             const updatedHomework = await db.query('UPDATE homework SET content = $1 WHERE id = $2 RETURNING *', [content, id]);
-            res.json(updatedHomework.rows[0]);
+            res.json(updatedHomework.rows);
         } catch (error) {
             console.error("Error updating homework:", error);
             res.status(500).json({ error: "Internal Server Error" });
@@ -41,9 +41,9 @@ class PostController{
     }
 
     async getHomeworkByUserAndLesson(req, res) {
-        const { user_id, lesson_number } = req.body;  
-        const homework = await db.query('SELECT * FROM homework WHERE user_id = $1 AND lesson_number = $2', [user_id, lesson_number]);
-        res.json(homework.rows[0]);  
+        const { user_id, lesson_number, group_id  } = req.query;  
+        const homework = await db.query('SELECT * FROM homework WHERE user_id = $1 AND lesson_number = $2 AND group_id = $3', [user_id, lesson_number, group_id]);
+        res.json(homework.rows);  
     }
 }
 
