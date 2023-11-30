@@ -68,9 +68,10 @@ export const Lesson34 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати семантичний шаблон компонентним підходом React.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

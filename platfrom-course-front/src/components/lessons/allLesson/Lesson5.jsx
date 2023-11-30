@@ -112,9 +112,10 @@ const Lesson5 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">1. Зверстати форму:</p>
                         <a className="link" target="blank" href="https://docs.google.com/document/d/1m7Sb9s5yQ_juWCKrDWbz8pxbQ06Ni4BaCab-4jsI_Cc/edit?usp=sharing">Посилання на завдання</a>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>
     );
 }

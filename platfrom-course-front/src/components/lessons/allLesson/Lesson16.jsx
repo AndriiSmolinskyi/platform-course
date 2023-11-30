@@ -31,9 +31,10 @@ export const Lesson16 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">2. <a className="link" target="blank" href="https://www.figma.com/file/KfKTNBuV4G9iFLXFP6ul88/SaaS-Homepage-Website-(Community)?node-id=0%3A1&mode=dev">Варіант 2</a>.</p>
                         <p className="content__paragraph">3. <a className="link" target="blank" href="https://www.figma.com/file/BM2yRE3OnYqiM2yTJCkNqz/Powerpro-CRM---Landing-Page-(Community)?type=design&node-id=3-2&mode=design&t=05rsBFymbi9hW9bQ-0">Варіант 3</a>.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

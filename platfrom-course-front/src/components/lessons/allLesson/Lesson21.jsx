@@ -80,9 +80,10 @@ export const Lesson21 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">2. Створіть функцію, яка приймає число і повертає суму всіх чисел від 1 до цього числа (включно).</p>
                         <p className="content__paragraph">3. Розробіть функцію, яка приймає два числа і повертає їх найменший спільний кратник (НСК).</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

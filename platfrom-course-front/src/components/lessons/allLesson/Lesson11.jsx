@@ -26,9 +26,10 @@ export const Lesson11 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зврестати форму <a className="link" target="blank" href="https://www.figma.com/file/8lXhAdN1Ui6hG9oI3pM3jF/Flexible-Form-Template-(Community)?type=design&node-id=0-1&mode=design&t=VXghD9ib8tG4YgWT-0">Посилання</a>.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

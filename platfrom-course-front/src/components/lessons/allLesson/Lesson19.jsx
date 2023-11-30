@@ -84,9 +84,10 @@ export const Lesson19 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">2. Створіть програму, яка приймає три числа і виводить їх у порядку спадання.</p>
                         <p className="content__paragraph">3. Розробіть "квест" - програму, де користувач вводить відповіді на різні питання, і в залежності від відповідей він отримує різні "кінцівки" інтерактивного оповідання.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

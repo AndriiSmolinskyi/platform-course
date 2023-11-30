@@ -57,9 +57,10 @@ export const Lesson41 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зробити фінальний проект та вчасно здати, бажаю успіхів:).</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

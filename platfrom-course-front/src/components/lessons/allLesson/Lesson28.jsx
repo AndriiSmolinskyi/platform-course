@@ -35,9 +35,10 @@ export const Lesson28 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Створити сайт з фільмами. Дані взяти з апі <a className="link" target="blank" href="https://www.omdbapi.com/">Посилання</a>. Потрібно зареєструватись щоб отримати ключ до апі.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

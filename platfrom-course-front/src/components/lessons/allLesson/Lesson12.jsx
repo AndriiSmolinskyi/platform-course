@@ -63,9 +63,10 @@ export const Lesson12 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати <a className="link" target="blank" href="https://www.figma.com/file/Cr43j8OcF2OwXRYJBsgTpk/Finpoint---Financial-Consulting-Landing-Page-Design-(Free)-(Community)?type=design&node-id=0-1&mode=design&t=A20h0lIbuB2cgluu-0">Макет</a>.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

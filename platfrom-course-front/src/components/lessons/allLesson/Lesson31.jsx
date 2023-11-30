@@ -36,9 +36,10 @@ export const Lesson0 = ( {lessonId, groupId} ) => {
                     <p className="content__paragraph">3. Створіть клас BankAccount, який має властивості balance і accountNumber. Додайте методи deposit(amount) і withdraw(amount) для здійснення операцій з рахунком. Зберігайте баланс і номер рахунку як приватні властивості та забезпечуйте інкапсуляцію. Створіть підкласи CheckingAccount і SavingsAccount, які успадковують від BankAccount. Створіть об'єкти обох підкласів і виконайте операції з депозитами та виводами.</p>
                     <p className="content__paragraph">4. Створіть клас Subject, який має властивість subjectName. Створіть підкласи MathSubject, ScienceSubject і LiteratureSubject, які успадковують від Subject. Додайте приватну властивість teacherName для кожного підкласу. Створіть методи для встановлення вчителя для кожного предмету та методи для виведення інформації про предмет і вчителя. Забезпечте інкапсуляцію даних про вчителя.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

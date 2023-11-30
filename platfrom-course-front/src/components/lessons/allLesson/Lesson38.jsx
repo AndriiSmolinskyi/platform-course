@@ -37,9 +37,10 @@ export const Lesson0 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Створити веб-застосунок, де зверху буде хедер і можна буде ним ходити по різним сторінкам. Як ідея можна зробити типу магазину. Перша сторінка Home. Далі About, Cart, Like, Orders.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

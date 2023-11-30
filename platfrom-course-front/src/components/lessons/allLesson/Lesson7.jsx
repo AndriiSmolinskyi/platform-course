@@ -56,9 +56,10 @@ export const Lesson7 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Додати стилі в html макет з минулого домашнього <a className="link" target="blank" href="https://www.figma.com/file/DoIDi8KtqZuyXKZZ8bL1Vj/Xbox-Landing-(Community)?type=design&mode=design&t=t3admjU8lZaxdgfW-0">Посилання</a>.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

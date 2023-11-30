@@ -41,9 +41,10 @@ export const Lesson0 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати макет з випадаючими вікнами, використовувати рендер списків та умовний рендер.<a className="link" target="blank" href="https://www.figma.com/file/AilaUWMPIEotsLTw5L6vZ5/Untitled?type=design&node-id=0%3A1&mode=dev">Макет</a>.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

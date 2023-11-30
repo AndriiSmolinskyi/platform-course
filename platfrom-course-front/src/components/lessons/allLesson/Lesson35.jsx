@@ -37,9 +37,10 @@ export const Lesson0 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">1. Створити компонент, який відображає статус виконання завдання.</p>
                         <p className="content__paragraph">2. Створіть компонент UserProfile, який отримує props з даними про користувача (ім'я, електронну пошту, статус). Виведіть ці дані на сторінці, включаючи значок статусу (наприклад, онлайн або офлайн). Додайте можливість редагування цих даних за допомогою кнопки "Редагувати"..</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                  
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

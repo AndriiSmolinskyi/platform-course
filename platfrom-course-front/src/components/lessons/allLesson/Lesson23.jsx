@@ -85,9 +85,10 @@ export const Lesson23 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">2. Видаліть всі об'єкти з масиву, в яких вік менше 30 років.</p>
                         <p className="content__paragraph">3. За допомогою циклу for пройдіться по всіх елементах масиву об'єктів і виведіть на консоль тільки імена.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

@@ -31,9 +31,10 @@ export const Lesson39 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати <a className="link" target="blank" href="https://www.figma.com/file/rSHDUQB2FMPg5cR7LGfcQx/Untitled?type=design&node-id=0%3A1&mode=dev">Форму</a>.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

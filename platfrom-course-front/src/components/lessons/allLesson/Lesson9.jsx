@@ -88,9 +88,10 @@ export const Lesson9 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">1. Зврестати <a className="link" target="blank" href="https://www.figma.com/file/FWbaShhlNmKbS7sQV02bpT/web%3B-Landing-Page-example-(Community)?node-id=1%3A135&mode=dev">Посилання.</a></p>
                         <p className="content__paragraph">2. Пройти гру <a className="link" target="blank" href="https://flexboxfroggy.com/#uk">Посилання.</a></p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

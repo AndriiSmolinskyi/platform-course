@@ -65,9 +65,10 @@ export const Lesson18 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">1. Користувач вводить радіус кола і повинно вивестисть його діаметр, довжину та площу.</p>
                         <p className="content__paragraph">2. Депозит. Користувач вводить якусь кількість грошей під 4% річних. Скільки він отримає за два роки.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

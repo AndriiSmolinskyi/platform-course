@@ -56,9 +56,10 @@ export const Lesson0 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Створити сайт погоди, який робить запит до якоїсь Weather Api кожних 5 хвилин. Використати axios, setTimeout, useEffect.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

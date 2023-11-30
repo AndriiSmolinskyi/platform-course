@@ -103,9 +103,10 @@ export const Lesson24 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">2. Створіть масив продукти з об'єктами товарів, де кожен товар має властивості назва та ціна. Використовуючи метод filter(), створіть новий масив дорогіПродукти, який буде містити товари з ціною вище 50. Виведіть дорогіПродукти.</p>
                         <p className="content__paragraph">3. Створіть масив букви з рядком "abcdefg". Використовуючи метод includes(), перевірте, чи міститься літера "c" в масиві букви та виведіть результат.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

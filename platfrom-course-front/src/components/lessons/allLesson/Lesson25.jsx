@@ -80,9 +80,10 @@ export const Lesson0 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">1. Створіть масив обєктів user де буде в обєкті Name City, мінімум 5 обєктів. Потрібно використовуючи минулу картчоку вивести всі карточки..</p>
                         <p className="content__paragraph">2. Створити розмітку input input button(onclick). Полі повинні приймати імя юзера та його місто. Далі при кліку на кнопку має вивестись в на сторінку новий юзер(потрібно написати функцію).</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

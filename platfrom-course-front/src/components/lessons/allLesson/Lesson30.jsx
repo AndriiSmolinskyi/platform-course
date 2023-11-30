@@ -40,9 +40,10 @@ export const Lesson0 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">3. Створіть клас Employee, який має властивості name, position, і salary. Створіть підкласи Engineer і Manager, які успадковують від Employee. Додайте методи для зміни зарплати для обох підкласів. Створіть об'єкти цих класів і виконайте операції зміни зарплати.</p>
                         <p className="content__paragraph">4. Створіть клас Book, який має властивості title, author, і year. Потім створіть підкласи FictionBook і NonFictionBook, які успадковують від Book. Додайте методи для визначення жанру книги. Створіть об'єкти обох підкласів та виведіть їх інформацію разом з жанром.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

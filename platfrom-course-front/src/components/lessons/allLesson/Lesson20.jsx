@@ -58,9 +58,10 @@ export const Lesson20 = ( {lessonId, groupId} ) => {
                         <p className="content__paragraph">2. Створіть програму, яка обчислює суму всіх простих чисел в заданому діапазоні.</p>
                         <p className="content__paragraph">3. Розробіть "гру вгадай число", де програма обирає випадкове число від 1 до 100, а користувач повинен вгадати його. Програма надає підказки про те, чи число більше чи менше введеного користувачем.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

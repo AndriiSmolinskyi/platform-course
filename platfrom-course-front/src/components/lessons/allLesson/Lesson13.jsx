@@ -41,9 +41,10 @@ export const Lesson13 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати <a className="link" target="blank" href="https://www.figma.com/file/s4RqpMWogbpHTC0COqAirQ/Bank-Dashboard-(Community)?node-id=0%3A1&mode=dev">Макет</a>.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

@@ -58,47 +58,6 @@ class UserConroller{
         }
     }
 
-
-
-
-    // async updateUserAdmin(req, res) {
-    //     const { id, name, surname, role, email, phone } = req.body;
-    
-    //     let updateFields = [];
-    //     let values = [];
-    //     let paramCount = 1; // Початковий лічильник параметрів
-    
-    //     function addUpdateField(fieldName, value) {
-    //         if (value !== undefined) {
-    //             updateFields.push(`${fieldName} = $${paramCount}`);
-    //             values.push(value);
-    //             paramCount++;
-    //         }
-    //     }
-    
-    //     addUpdateField('name', name);
-    //     addUpdateField('surname', surname);
-    //     addUpdateField('role', role);
-    //     addUpdateField('email', email);
-    //     addUpdateField('phone', phone);
-    
-    //     if (values.length === 0) {
-    //         return res.status(400).json({ error: "No fields provided for update" });
-    //     }
-    
-    //     values.push(id); // id завжди обов'язкове
-    
-    //     const query = `UPDATE users SET ${updateFields.join(', ')} WHERE id = $${paramCount} RETURNING *`;
-    
-    //     try {
-    //         const user = await db.query(query, values);
-    //         res.json(user.rows[0]);
-    //     } catch (error) {
-    //         console.error("Error updating user:", error);
-    //         res.status(500).json({ error: "Internal Server Error" });
-    //     }
-    // }
-
     async updateUserAdmin(req, res) {
         const { id, name, surname, role, email, phone } = req.body;
     

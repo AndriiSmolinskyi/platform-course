@@ -52,9 +52,10 @@ export const Lesson3 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Створити репозиторій гіт. Зробити головну вітку з шаблоном проекта. Зробити від неї гілку з домашнім завданням( закинути свою минулу домашку).</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

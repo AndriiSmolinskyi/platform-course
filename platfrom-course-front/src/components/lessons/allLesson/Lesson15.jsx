@@ -22,9 +22,10 @@ export const Lesson15 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Доверстати командою <a className="link" target="blank" href="https://www.figma.com/file/eXAczNdyCXWKfm0YdSwvPh/School-Remarkable---html-website-template%C2%A0with-source-code-for-school-(Community)?node-id=2636%3A1327&mode=dev">Макет</a>.</p>
                     </div>
-                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }
