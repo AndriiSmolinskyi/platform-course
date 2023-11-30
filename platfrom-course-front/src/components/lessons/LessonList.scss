@@ -10,24 +10,29 @@
         flex-direction: column;
         gap: 20px;
 
+
         .lesson-list__item{
             cursor: pointer; 
             height: 45px;
             white-space: nowrap; /* Забороняємо тексту переходити на новий рядок */
             overflow: hidden;     /* Приховуємо текст, який виходить за межі блоку */
             text-overflow: ellipsis; /* Відображаємо троє крапок для обрізаного тексту */ 
-            padding: 10px;    
+            padding: 15px;    
             display: flex;  
             align-items: center;
-            // border-bottom: 1px solid rgb(234, 231, 231);
+            // border-bottom: 1px solid rgb(234, 231, 231);    
         }
 
         .lesson-list__item:hover{
-            
+            border: 2px solid rgb(234, 231, 231);
             border-radius: 10px;
         }
     }
 }
+
+
+
+
 
 @media (max-width: 768px) {
     .lesson-main {

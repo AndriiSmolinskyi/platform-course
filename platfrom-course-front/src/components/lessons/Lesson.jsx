@@ -128,12 +128,12 @@ export const Lesson = (  ) => {
                     </li>
                 ))}
 
-
                 {visibleLessons.map((lesson, index) => (
-                    <li key={index} onClick={() => setSelectedLesson(index + 1)} className="lesson-list__item">
-                        {`${index + 1}. ${lesson}`}
-                    </li>
+                        <li key={index} onClick={() => setSelectedLesson(index + 1)} className="lesson-list__item">
+                            {`${index + 1}. ${lesson}`}
+                        </li>
                 ))}
+              
 
             </ul>
             <div className="lesson-content">

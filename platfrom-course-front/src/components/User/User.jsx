@@ -6,6 +6,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import "./User.scss";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -15,7 +17,7 @@ const validationSchema = Yup.object().shape({
         .min(2, 'Прізвище повинно містити принаймні 2 символи')
         .max(15, 'Прізвище повинно бути не більше 15 букв'),
     phone: Yup.string()
-        .matches(/^\d{10}$/, 'Телефон повинен містити рівно 10 цифр')
+        .matches(/^\d{9}$/, 'Телефон повинен містити 10 цифр')
 });
 
 export const UserPage = () => {
@@ -53,18 +55,23 @@ export const UserPage = () => {
         }
     }, [user, navigate]);
 
-   
+    const GoBack = () => {
+        navigate('/home')
+    }
 
     return (
         <div>
             <Header></Header>  
             <div className="user_container">
                 <div className="user">
+                    <FontAwesomeIcon icon={faArrowLeft} onClick={GoBack} className="back__arrow"/>
                     {user && 
-                        <div className="user__left user__item">     
-                            <p className="user__left__text">{user.name} {user.surname}</p>
-                            <p className="user__left__text">{user.email}</p>
-                            <p className="user__left__text">{user.phone && user.phone}</p>
+                        <div className="user__left__mod user__item"> 
+                            <div className="user__left">
+                                <p className="user__left__text">{user.name} {user.surname}</p>
+                                <p className="user__left__text">{user.email}</p>
+                                <p className="user__left__text">{user.phone && user.phone}</p>
+                            </div>    
                             <button className="user__logot" onClick={handleLogout}>Logout</button>
                         </div>
                     }     
@@ -74,7 +81,11 @@ export const UserPage = () => {
                             name: '',
                         }}
                         validationSchema={validationSchema}
-                        onSubmit={(values) => handleChangeUser('name', values)}
+                        onSubmit={(values) => {
+                            // Додайте префікс +380 до телефону, якщо він не має
+                            const formattedPhone = values.phone.startsWith('+380') ? values.phone : `+380${values.phone}`;
+                            handleChangeUser('phone', { phone: formattedPhone });
+                        }}
                         className="user__formik"
                     >
                         <Form className="user__form">
@@ -83,7 +94,7 @@ export const UserPage = () => {
                                 <Field type="text" id="name" name="name" className="user__input"/>
                                 <ErrorMessage name="name" component="div" className="user__error"/>
                             </div>
-                            <button type="submit" className="form__btn">Змінити</button>
+                            <button type="submit" className="user__form__btn">Змінити</button>
                         </Form>
                     </Formik>
 
@@ -92,16 +103,16 @@ export const UserPage = () => {
                             surname: '',
                         }}
                         validationSchema={validationSchema}
-                        onSubmit={(values) => handleChangeUser('surname', values)}
+                        onSubmit={(values) =>  handleChangeUser('surname', values)}
                         className="user__formik"
                     >
                         <Form className="user__form">
-                            <div className="input-block">
+                            <div className="user__input-block">
                                 <label htmlFor="surname" className="user__label">Змінити прізвище:</label>
                                 <Field type="text" id="surname" name="surname" className="user__input"/>
                                 <ErrorMessage name="surname" component="div" className="user__error"/>
                             </div>
-                            <button type="submit" className="form__btn">Змінити</button>
+                            <button type="submit" className="user__form__btn">Змінити</button>
                         </Form>
                     </Formik>
                     
@@ -110,16 +121,22 @@ export const UserPage = () => {
                             phone: '',
                         }}
                         validationSchema={validationSchema}
-                        onSubmit={(values) => handleChangeUser('phone', values)}
+                        onSubmit={(values) => {
+                            values.phone = `+380${values.phone}`;
+                            handleChangeUser('phone', values);
+                        }}
                         className="user__formik"
                     >
                         <Form className="user__form">
                             <div className="user__input-block">
                                 <label htmlFor="phone" className="user__label">Змінити телефон:</label>
-                                <Field type="number" id="phone" name="phone" className="user__input" maxLength="10" inputMode="numeric"/>
+                                <div className="phone__box">
+                                    <span className="first__number">+380</span>
+                                    <Field type="text" id="phone" name="phone" className="user__input" inputMode="numeric"/>
+                                </div>
                                 <ErrorMessage name="phone" component="div" className="user__error"/>
                             </div>
-                            <button type="submit" className="form__btn">Змінити</button>
+                            <button type="submit" className="user__form__btn">Змінити</button>
                         </Form>
                     </Formik>
 
