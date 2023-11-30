@@ -1,6 +1,6 @@
 import "./Lesson.scss";
 
-export const Lesson32 = () => {
+export const Lesson32 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">

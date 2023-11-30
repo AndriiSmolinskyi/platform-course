@@ -11,7 +11,7 @@ import eight from "./Lesson26_img/eight.png"
 import nine from "./Lesson26_img/nine.png"
 import ten from "./Lesson26_img/ten.png"
 
-export const Lesson26 = () => {
+export const Lesson26 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -82,7 +82,7 @@ export const Lesson26 = () => {
                         <p className="content__paragraph">1. Створити HTML-сторінку з великою таблицею. При кліку на заголовок стовпця, необхідно відсортувати дані цього стовпця. Врахуй, що числові значення повинні сортуватися як числа, а не як рядки.</p>
                         <p className="content__paragraph">2. Створіть фотогалерею. Коли користувач клікає на зображення, виводьте його в більшому розмірі в окремому вікні. Додайте можливість перегортати зображення за допомогою кнопок "Назад" та "Вперед".</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

@@ -1,7 +1,7 @@
 import "./Lesson.scss";
 import { LessonBtn } from "./LessonBtn";
 
-export const Lesson6 = () => {
+export const Lesson6 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -46,7 +46,7 @@ export const Lesson6 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Семантично створити HTML структуру макету <a className="link" target="blank" href="https://www.figma.com/file/nrCixAA88N1oUGPThLvwGZ/Untitled?type=design&node-id=1%3A38&mode=design&t=wv9E3dqZIDjFi6F1-1">Посилання</a></p>   
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

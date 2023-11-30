@@ -1,13 +1,11 @@
 import "./LessonBtn.scss";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../../Context/UserContext";
-import { GroupContext } from "../../../Context/GroupContext";
 import { HmContext } from "../../../Context/HmContext";
 import axios from 'axios';
 
-export const LessonBtn = ({ hmId, groupId }) => {
+export const LessonBtn = ({ lessonId, groupId }) => {
     const { user } = useContext(UserContext);
-    const { group } = useContext(GroupContext);
     const { hm, setHm } = useContext(HmContext);
     const [ homeworkText, setHomeworkText] = useState(""); // Стан для зберігання тексту домашнього завдання
     const [ error, setError ] = useState(""); // Стан для відображення помилок валідації
@@ -31,13 +29,12 @@ export const LessonBtn = ({ hmId, groupId }) => {
         const body = {
             user_id: user.id,
             group_id: groupId,
-            lesson_number: hmId,
+            lesson_number: lessonId,
             content: homeworkText
         }
 
         try {            
             const response = await axios.post(`http://localhost:8080/api/user/sendHomework`, body );
-            console.log(response.data)
             getHmUser()
         } catch (error) {
             console.error('Помилка при відправкі домашнього завдання', error.response); 
@@ -47,10 +44,9 @@ export const LessonBtn = ({ hmId, groupId }) => {
     const getHmUser = async () => {
         try {            
             const response = await axios.get(`http://localhost:8080/api/teacher/getHomeworkByUserAndLessonAndGroup`, {
-            params: { user_id: user.id, group_id: groupId, lesson_number: hmId }
+            params: { user_id: user.id, group_id: groupId, lesson_number: lessonId }
         });
             const goodHm = response.data
-            console.log(response.data, 'hello')
             setHm(goodHm)
         } catch (error) {
             console.error('Помилка при відправкі домашнього завдання', error.response); 
@@ -66,7 +62,6 @@ export const LessonBtn = ({ hmId, groupId }) => {
         console.log(homeworkText)
         try {            
             const response = await axios.put(`http://localhost:8080/api/user/editHomework`, body);
-            console.log(response.data, 'bye')
             getHmUser()
         } catch (error) {
             console.error('Помилка при редагування домашнього завдання', error.response); 
@@ -78,7 +73,7 @@ export const LessonBtn = ({ hmId, groupId }) => {
 
     useEffect(() => {       
         getHmUser()
-    }, [hmId, groupId]);
+    }, [lessonId, groupId]);
 
 
 
@@ -86,8 +81,8 @@ export const LessonBtn = ({ hmId, groupId }) => {
         <div className="hm">
             {hm && hm.map((hmData, index) => (
                 <div key={index}>
-                    <p>{hmData.content}</p>
-                    <p>{hmData.instructor_feedback}</p>
+                    <p className="hm__data__text">{hmData.content}</p>
+                    <p className="hm__data__text">{hmData.instructor_feedback}</p>
                 </div>
             ))}
             <textarea

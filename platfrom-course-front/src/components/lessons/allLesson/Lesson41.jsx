@@ -1,7 +1,7 @@
 import "./Lesson.scss";
 import { LessonBtn } from "./LessonBtn";
 
-export const Lesson41 = () => {
+export const Lesson41 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -57,7 +57,7 @@ export const Lesson41 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зробити фінальний проект та вчасно здати, бажаю успіхів:).</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

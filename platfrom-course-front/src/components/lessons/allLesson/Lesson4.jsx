@@ -1,7 +1,7 @@
 import "./Lesson.scss";
 import { LessonBtn } from "./LessonBtn";
 
-export const Lesson4 = () => {
+export const Lesson4 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -58,7 +58,7 @@ export const Lesson4 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати семантично якусь статтю. Або зробити своє резюме семантичним.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

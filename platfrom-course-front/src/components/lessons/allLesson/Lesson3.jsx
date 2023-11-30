@@ -1,7 +1,7 @@
 import "./Lesson.scss";
 import { LessonBtn } from "./LessonBtn";
 
-export const Lesson3 = () => {
+export const Lesson3 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -52,7 +52,7 @@ export const Lesson3 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Створити репозиторій гіт. Зробити головну вітку з шаблоном проекта. Зробити від неї гілку з домашнім завданням( закинути свою минулу домашку).</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

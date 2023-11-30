@@ -2,7 +2,7 @@ import React from 'react';
 import "./Lesson.scss";
 import { LessonBtn } from "./LessonBtn";
 
-const Lesson5 = () => {
+const Lesson5 = ( {lessonId, groupId} ) => {
     return (
         <div className="lesson-block">
             <h1 className="title-h1">Форми.</h1>
@@ -112,7 +112,7 @@ const Lesson5 = () => {
                         <p className="content__paragraph">1. Зверстати форму:</p>
                         <a className="link" target="blank" href="https://docs.google.com/document/d/1m7Sb9s5yQ_juWCKrDWbz8pxbQ06Ni4BaCab-4jsI_Cc/edit?usp=sharing">Посилання на завдання</a>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>

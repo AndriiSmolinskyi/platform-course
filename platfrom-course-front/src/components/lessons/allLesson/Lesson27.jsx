@@ -5,7 +5,7 @@ import second from "./Lesson27_img/second.png"
 import three from "./Lesson27_img/three.png"
 import four from "./Lesson27_img/four.png"
 
-export const Lesson27 = () => {
+export const Lesson27 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -35,7 +35,7 @@ export const Lesson27 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати <a className="link" target="blank" href="https://www.figma.com/file/IDyJC5Eiqm2pzxCWO3KRzi/Antic-%E2%80%A2-Decoration-Landing-Page-(Community)?node-id=0%3A1&mode=dev">макет</a>.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

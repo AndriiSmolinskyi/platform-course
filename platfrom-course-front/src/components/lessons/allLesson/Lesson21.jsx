@@ -6,7 +6,7 @@ import three from "./Lesson21_img/three.png"
 import four from "./Lesson21_img/four.png"
 import five from "./Lesson21_img/five.png"
 
-export const Lesson21 = () => {
+export const Lesson21 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -80,7 +80,7 @@ export const Lesson21 = () => {
                         <p className="content__paragraph">2. Створіть функцію, яка приймає число і повертає суму всіх чисел від 1 до цього числа (включно).</p>
                         <p className="content__paragraph">3. Розробіть функцію, яка приймає два числа і повертає їх найменший спільний кратник (НСК).</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

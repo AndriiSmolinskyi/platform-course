@@ -4,7 +4,7 @@ import first from "./Lesson37_img/first.png"
 import second from "./Lesson37_img/second.png"
 
 
-export const Lesson0 = () => {
+export const Lesson0 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -56,7 +56,7 @@ export const Lesson0 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Створити сайт погоди, який робить запит до якоїсь Weather Api кожних 5 хвилин. Використати axios, setTimeout, useEffect.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

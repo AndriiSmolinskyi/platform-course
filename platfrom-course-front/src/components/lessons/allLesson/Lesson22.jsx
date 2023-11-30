@@ -9,7 +9,7 @@ import six from "./Lesson22_img/six.png"
 import seven from "./Lesson22_img/seven.png"
 import eight from "./Lesson22_img/eight.png"
 
-export const Lesson22 = () => {
+export const Lesson22 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -83,7 +83,7 @@ export const Lesson22 = () => {
                         <p className="content__paragraph">2. Створіть об'єкт, що представляє замовлення з властивостями "номер", "товари" (масив об'єктів з інформацією про товари) та "загальна вартість". Напишіть функцію, яка обчислює загальну вартість замовлення на основі інформації про товари.</p>
                         <p className="content__paragraph">3. Створіть об'єкт, що представляє школу з властивостями "назва", "адреса" та "учні" (масив об'єктів з інформацією про учнів). Напишіть функцію, яка знаходить середній вік учнів школи.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

@@ -1,7 +1,7 @@
 import "./Lesson.scss";
 import { LessonBtn } from "./LessonBtn";
 
-export const Lesson0 = () => {
+export const Lesson0 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -54,7 +54,7 @@ export const Lesson0 = () => {
                         <p className="content__paragraph">1. Збереження користувацьких налаштувань. Ваша мета - створити сторінку з користувацькими налаштуваннями (наприклад, кольорова схема, розмір шрифту, мова), які користувач може змінювати. Коли користувач вносить зміни, зберігайте їх у Local Storage. При кожному завантаженні сторінки перевірте Local Storage і застосовуйте налаштування користувача за замовчуванням.</p>
                         <p className="content__paragraph">2. Збереження списку завдань (to-do list). Створіть додаток для управління списком завдань. Користувач може додавати, видаляти та позначати завдання як виконані. Зберігайте цей список завдань в Local Storage, щоб дані не зникали при оновленні сторінки. Кожного разу, коли користувач додає або видаляє завдання, оновлюйте дані в Local Storage та оновлюйте відображення списку завдань.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

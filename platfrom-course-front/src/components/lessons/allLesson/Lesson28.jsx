@@ -3,7 +3,7 @@ import { LessonBtn } from "./LessonBtn";
 import first from "./Lesson28_img/first.png"
 import second from "./Lesson28_img/second.png"
 
-export const Lesson28 = () => {
+export const Lesson28 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -35,7 +35,7 @@ export const Lesson28 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Створити сайт з фільмами. Дані взяти з апі <a className="link" target="blank" href="https://www.omdbapi.com/">Посилання</a>. Потрібно зареєструватись щоб отримати ключ до апі.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

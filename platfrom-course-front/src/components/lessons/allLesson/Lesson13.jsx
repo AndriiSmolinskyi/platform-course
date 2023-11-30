@@ -4,7 +4,7 @@ import example1 from "./Lesson13_img/example1.png"
 import example2 from "./Lesson13_img/example2.png"
 import example3 from "./Lesson13_img/example3.png"
 
-export const Lesson13 = () => {
+export const Lesson13 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -41,7 +41,7 @@ export const Lesson13 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати <a className="link" target="blank" href="https://www.figma.com/file/s4RqpMWogbpHTC0COqAirQ/Bank-Dashboard-(Community)?node-id=0%3A1&mode=dev">Макет</a>.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

@@ -139,48 +139,48 @@ export const Lesson = (  ) => {
             <div className="lesson-content">
                 {selectedLesson <= visibleLessons.length && (
                     <div>
-                        {selectedLesson === 1 && <Lesson1 hmId={1} groupId={currentGroup}/>}
-                        {selectedLesson === 2 && <Lesson2 hmId={2}/>}
-                        {selectedLesson === 3 && <Lesson3 />}
-                        {selectedLesson === 4 && <Lesson4 />}
-                        {selectedLesson === 5 && <Lesson5 />}
-                        {selectedLesson === 6 && <Lesson6 />}
-                        {selectedLesson === 7 && <Lesson7 />}
-                        {selectedLesson === 8 && <Lesson8 />}
-                        {selectedLesson === 9 && <Lesson9 />}
-                        {selectedLesson === 10 && <Lesson10 />}
-                        {selectedLesson === 11 && <Lesson11 />}
-                        {selectedLesson === 12 && <Lesson12 />}
-                        {selectedLesson === 13 && <Lesson13 />}
-                        {selectedLesson === 14 && <Lesson14 />}
-                        {selectedLesson === 15 && <Lesson15 />}
-                        {selectedLesson === 16 && <Lesson16 />}
-                        {selectedLesson === 17 && <Lesson17 />}
-                        {selectedLesson === 18 && <Lesson18 />}
-                        {selectedLesson === 19 && <Lesson19 />}
-                        {selectedLesson === 20 && <Lesson20 />}
-                        {selectedLesson === 21 && <Lesson21 />}
-                        {selectedLesson === 22 && <Lesson22 />}
-                        {selectedLesson === 23 && <Lesson23 />}
-                        {selectedLesson === 24 && <Lesson24 />}
-                        {selectedLesson === 25 && <Lesson25 />}
-                        {selectedLesson === 26 && <Lesson26 />}
-                        {selectedLesson === 27 && <Lesson27 />}
-                        {selectedLesson === 28 && <Lesson28 />}
-                        {selectedLesson === 29 && <Lesson29 />}
-                        {selectedLesson === 30 && <Lesson30 />}
-                        {selectedLesson === 31 && <Lesson31 />}
-                        {selectedLesson === 32 && <Lesson32 />}
-                        {selectedLesson === 33 && <Lesson33 />}
-                        {selectedLesson === 34 && <Lesson34 />}
-                        {selectedLesson === 35 && <Lesson35 />}
-                        {selectedLesson === 36 && <Lesson36 />}
-                        {selectedLesson === 37 && <Lesson37 />}
-                        {selectedLesson === 38 && <Lesson38 />}
-                        {selectedLesson === 39 && <Lesson39 />}
-                        {selectedLesson === 40 && <Lesson40 />}
-                        {selectedLesson === 41 && <Lesson41 />}
-                        {selectedLesson === 42 && <Lesson42 />}
+                        {selectedLesson === 1 && <Lesson1 lessonId={1} groupId={currentGroup}/>}
+                        {selectedLesson === 2 && <Lesson2 lessonId={2} groupId={currentGroup}/>}
+                        {selectedLesson === 3 && <Lesson3 lessonId={3} groupId={currentGroup}/>}
+                        {selectedLesson === 4 && <Lesson4 lessonId={4} groupId={currentGroup}/>}
+                        {selectedLesson === 5 && <Lesson5 lessonId={5} groupId={currentGroup}/>}
+                        {selectedLesson === 6 && <Lesson6 lessonId={6} groupId={currentGroup}/>}
+                        {selectedLesson === 7 && <Lesson7 lessonId={7} groupId={currentGroup}/>}
+                        {selectedLesson === 8 && <Lesson8 lessonId={8} groupId={currentGroup}/>}
+                        {selectedLesson === 9 && <Lesson9 lessonId={9} groupId={currentGroup}/>}
+                        {selectedLesson === 10 && <Lesson10 lessonId={10} groupId={currentGroup}/>}
+                        {selectedLesson === 11 && <Lesson11 lessonId={11} groupId={currentGroup}/>}
+                        {selectedLesson === 12 && <Lesson12 lessonId={12} groupId={currentGroup}/>}
+                        {selectedLesson === 13 && <Lesson13 lessonId={13} groupId={currentGroup}/>}
+                        {selectedLesson === 14 && <Lesson14 lessonId={14} groupId={currentGroup}/>}
+                        {selectedLesson === 15 && <Lesson15 lessonId={15} groupId={currentGroup}/>}
+                        {selectedLesson === 16 && <Lesson16 lessonId={16} groupId={currentGroup}/>}
+                        {selectedLesson === 17 && <Lesson17 lessonId={17} groupId={currentGroup}/>}
+                        {selectedLesson === 18 && <Lesson18 lessonId={18} groupId={currentGroup}/>}
+                        {selectedLesson === 19 && <Lesson19 lessonId={19} groupId={currentGroup}/>}
+                        {selectedLesson === 20 && <Lesson20 lessonId={20} groupId={currentGroup}/>}
+                        {selectedLesson === 21 && <Lesson21 lessonId={21} groupId={currentGroup}/>}
+                        {selectedLesson === 22 && <Lesson22 lessonId={22} groupId={currentGroup}/>}
+                        {selectedLesson === 23 && <Lesson23 lessonId={23} groupId={currentGroup}/>}
+                        {selectedLesson === 24 && <Lesson24 lessonId={24} groupId={currentGroup}/>}
+                        {selectedLesson === 25 && <Lesson25 lessonId={25} groupId={currentGroup}/>}
+                        {selectedLesson === 26 && <Lesson26 lessonId={26} groupId={currentGroup}/>}
+                        {selectedLesson === 27 && <Lesson27 lessonId={27} groupId={currentGroup}/>}
+                        {selectedLesson === 28 && <Lesson28 lessonId={28} groupId={currentGroup}/>}
+                        {selectedLesson === 29 && <Lesson29 lessonId={29} groupId={currentGroup}/>}
+                        {selectedLesson === 30 && <Lesson30 lessonId={30} groupId={currentGroup}/>}
+                        {selectedLesson === 31 && <Lesson31 lessonId={31} groupId={currentGroup}/>}
+                        {selectedLesson === 32 && <Lesson32 lessonId={32} groupId={currentGroup}/>}
+                        {selectedLesson === 33 && <Lesson33 lessonId={33} groupId={currentGroup}/>}
+                        {selectedLesson === 34 && <Lesson34 lessonId={34} groupId={currentGroup}/>}
+                        {selectedLesson === 35 && <Lesson35 lessonId={35} groupId={currentGroup}/>}
+                        {selectedLesson === 36 && <Lesson36 lessonId={36} groupId={currentGroup}/>}
+                        {selectedLesson === 37 && <Lesson37 lessonId={37} groupId={currentGroup}/>}
+                        {selectedLesson === 38 && <Lesson38 lessonId={38} groupId={currentGroup}/>}
+                        {selectedLesson === 39 && <Lesson39 lessonId={39} groupId={currentGroup}/>}
+                        {selectedLesson === 40 && <Lesson40 lessonId={40} groupId={currentGroup}/>}
+                        {selectedLesson === 41 && <Lesson41 lessonId={41} groupId={currentGroup}/>}
+                        {selectedLesson === 42 && <Lesson42 lessonId={42} groupId={currentGroup}/>}
                     </div>
                 )}
             </div>

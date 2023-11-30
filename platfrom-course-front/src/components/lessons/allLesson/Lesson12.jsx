@@ -7,7 +7,7 @@ import four from "./Lesson12_img/four.png"
 import five from "./Lesson12_img/five.png"
 import six from "./Lesson12_img/six.png"
 
-export const Lesson12 = () => {
+export const Lesson12 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -63,7 +63,7 @@ export const Lesson12 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати <a className="link" target="blank" href="https://www.figma.com/file/Cr43j8OcF2OwXRYJBsgTpk/Finpoint---Financial-Consulting-Landing-Page-Design-(Free)-(Community)?type=design&node-id=0-1&mode=design&t=A20h0lIbuB2cgluu-0">Макет</a>.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

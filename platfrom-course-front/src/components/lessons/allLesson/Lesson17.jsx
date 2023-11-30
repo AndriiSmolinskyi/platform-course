@@ -6,7 +6,7 @@ import three from "./Lesson17_img/three.png"
 import four from "./Lesson17_img/four.png"
 import five from "./Lesson17_img/five.png"
 
-export const Lesson17 = () => {
+export const Lesson17 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -69,7 +69,7 @@ export const Lesson17 = () => {
                         <p className="content__paragraph">2. Створіть дві змінні "number1" і "number2" і присвойте їм числові значення. Використовуючи базові математичні оператори (+, -, *, /), обчисліть результат додавання, віднімання, множення та ділення цих чисел.</p>
                         <p className="content__paragraph">3. Створіть змінну "modResult" і використайте оператор % для обчислення залишку від ділення одного числа на інше.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
                 </div>
             </div>
         </div>    

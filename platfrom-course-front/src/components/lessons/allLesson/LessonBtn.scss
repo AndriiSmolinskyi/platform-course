@@ -15,9 +15,23 @@ textarea {
     border: 2px solid lightgray; /* Товщина та стиль рамки */
     transition: border-color 0.3s ease; /* Плавний перехід для ефекту фокусу */
     resize: none;
+    margin-bottom: 30px;
 }
   
 textarea:focus {
     border-color: rgb(146, 231, 109);
     outline: none;
+}
+
+.hm{
+    width: 100%;
+    font-family: sans-serif;
+    padding: 20px 20px 20px 20px;
+    background-color: rgb(221, 245, 245);
+    border: 2px solid rgb(195, 236, 236); 
+    margin-top: 50px;
+}
+
+.hm__data__text{
+    margin-bottom: 30px;
 }
