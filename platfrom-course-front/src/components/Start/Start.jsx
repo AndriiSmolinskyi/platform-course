@@ -22,6 +22,7 @@ export const Start = () =>{
                 console.log('good')
                 const newToken = response.data.token
                 const newUser = response.data
+                console.log(newUser)
                 setUser(newUser)
                 localStorage.setItem('userToken', newToken)
                 navigation('/home')

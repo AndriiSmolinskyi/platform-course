@@ -61,8 +61,46 @@ class UserConroller{
 
 
 
+    // async updateUserAdmin(req, res) {
+    //     const { id, name, surname, role, email, phone } = req.body;
+    
+    //     let updateFields = [];
+    //     let values = [];
+    //     let paramCount = 1; // Початковий лічильник параметрів
+    
+    //     function addUpdateField(fieldName, value) {
+    //         if (value !== undefined) {
+    //             updateFields.push(`${fieldName} = $${paramCount}`);
+    //             values.push(value);
+    //             paramCount++;
+    //         }
+    //     }
+    
+    //     addUpdateField('name', name);
+    //     addUpdateField('surname', surname);
+    //     addUpdateField('role', role);
+    //     addUpdateField('email', email);
+    //     addUpdateField('phone', phone);
+    
+    //     if (values.length === 0) {
+    //         return res.status(400).json({ error: "No fields provided for update" });
+    //     }
+    
+    //     values.push(id); // id завжди обов'язкове
+    
+    //     const query = `UPDATE users SET ${updateFields.join(', ')} WHERE id = $${paramCount} RETURNING *`;
+    
+    //     try {
+    //         const user = await db.query(query, values);
+    //         res.json(user.rows[0]);
+    //     } catch (error) {
+    //         console.error("Error updating user:", error);
+    //         res.status(500).json({ error: "Internal Server Error" });
+    //     }
+    // }
+
     async updateUserAdmin(req, res) {
-        const { id, name, surname, role, email,  password } = req.body;
+        const { id, name, surname, role, email, phone } = req.body;
     
         let updateFields = [];
         let values = [];
@@ -80,7 +118,7 @@ class UserConroller{
         addUpdateField('surname', surname);
         addUpdateField('role', role);
         addUpdateField('email', email);
-        addUpdateField('password', password);
+        addUpdateField('phone', phone);
     
         if (values.length === 0) {
             return res.status(400).json({ error: "No fields provided for update" });
@@ -88,11 +126,17 @@ class UserConroller{
     
         values.push(id); // id завжди обов'язкове
     
-        const query = `UPDATE users SET ${updateFields.join(', ')} WHERE id = $${paramCount} RETURNING *`;
+        const updateQuery = `UPDATE users SET ${updateFields.join(', ')} WHERE id = $${paramCount}`;
+        const selectQuery = 'SELECT id, name, surname, role, email, token, phone FROM users WHERE id = $1';
     
         try {
-            const user = await db.query(query, values);
-            res.json(user.rows[0]);
+            // Виконуємо запит на оновлення
+            await db.query(updateQuery, values);
+    
+            // Виконуємо запит для отримання оновленого користувача
+            const updatedUser = await db.query(selectQuery, [id]);
+    
+            res.json(updatedUser.rows[0]);
         } catch (error) {
             console.error("Error updating user:", error);
             res.status(500).json({ error: "Internal Server Error" });
@@ -124,7 +168,7 @@ class UserConroller{
     //user auth
 
     async createUser(req, res) {
-        const { name, surname, role, email, password } = req.body;
+        const { name, surname,  email, password, role } = req.body;
     
         try {
             // Перевірка, чи email вже існує в базі даних
@@ -136,10 +180,10 @@ class UserConroller{
                 const token = uuid.v4(); // Генерація токена
     
                 const user = await db.query(`
-                    INSERT INTO users (name, surname, role, email,  password, token)
+                    INSERT INTO users (name, surname,  email,  password, token, role)
                     VALUES ($1, $2, $3, $4, $5, $6 )
                     RETURNING *
-                `, [name, surname, role, email, password, token]);
+                `, [name, surname, email, password, token, role]);
     
                 res.json({token: user.rows[0].token});
             }
@@ -181,7 +225,7 @@ class UserConroller{
     
             await db.query('UPDATE users SET token = $1 WHERE id = $2', [newToken, userId]);
     
-            const user = await db.query('SELECT id, name, surname, role, email, token FROM users WHERE id = $1', [userId]);
+            const user = await db.query('SELECT id, name, surname, role, email, token, phone FROM users WHERE id = $1', [userId]);
             res.json(user.rows[0]);
         } catch (error) {
             console.error("Error during auto login:", error);

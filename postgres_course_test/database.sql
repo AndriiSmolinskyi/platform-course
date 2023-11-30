@@ -11,7 +11,8 @@ CREATE TABLE users (
     role VARCHAR(255),
     email VARCHAR(255),
     password VARCHAR(255),
-    token VARCHAR(255)
+    token VARCHAR(255),
+    phone VARCHAR(255)
 );
 
 CREATE TABLE user_groups (

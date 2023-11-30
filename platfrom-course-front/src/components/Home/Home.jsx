@@ -7,6 +7,8 @@ import Lesson from "../lessons/Lesson";
 import axios from 'axios';
 import { Loading } from "../Loading/Loading";
 import { useState } from "react";
+import { Header } from "../Header/Header";
+
 
 export const Home = () => {
     const { user } = useContext(UserContext)
@@ -37,14 +39,15 @@ export const Home = () => {
         }
     }, [user, navigate]);
 
-    if (loading === true) {
+    if (loading && group.length > 0 && group[0].available_lessons) {
         return (
             <div>
+                <Header></Header>
                 <Lesson></Lesson>
             </div>
         );
     } else {
-        return <Loading></Loading>;
+        return <Loading>Очікуйте коли вас додадуть до групи, коли вас добавлять до групи</Loading>;
     }
 
 }

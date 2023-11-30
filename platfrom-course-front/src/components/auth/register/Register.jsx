@@ -50,6 +50,7 @@ export const Register = () =>{
           navigation('/')
         } catch (error) {
           console.error('Помилка при реєстрації:', error.response.data); // Змінено
+          alert('Помилка при реєстрації або пошта вже зайнята')
         }
     };
 
