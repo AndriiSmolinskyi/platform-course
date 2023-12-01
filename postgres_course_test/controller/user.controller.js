@@ -1,5 +1,7 @@
 const db = require('../db')
 const uuid = require('uuid');
+const nodemailer = require('nodemailer');
+const mailjetTransport = require('nodemailer-mailjet-transport');
 
 class UserConroller{
 
@@ -196,6 +198,68 @@ class UserConroller{
         const id = req.params.id
         const user = await db.query('SELECT * FROM users WHERE id = $1', [id]);
         res.json(user.rows[0]);
+    }
+
+
+
+
+    async forgotPassword(req, res){
+        const { email } = req.body
+    
+        try {
+            const userId = await db.query('SELECT id FROM users WHERE email = $1', [email]);
+
+            if(userId.rows.length > 0){
+
+                const transporter = nodemailer.createTransport({
+                    //service: 'Outlook365', // Эту строчку можете закомментировать, она не нужна
+                    host: 'smtp-mail.outlook.com', // В этой строчке пишите тоже самое что у меня
+                    auth: {
+                        user: "fourmin-it@outlook.com",
+                        pass: "19911991.Ukraine"
+                    },
+                    secure: false, 
+                    requireTLS: true,
+                });
+        
+
+
+                const randomCode = Math.floor(1000000000 + Math.random() * 9000000000);
+
+                const mailOptions = {
+                    from: '4min-IT',
+                    to: `${email}`,
+                    subject: 'Код для востановлення пароля',
+                    text: `Ваш код ${randomCode}`
+                };
+
+                
+                transporter.sendMail(mailOptions, (error, info) => {
+
+                    if (error) {
+                            console.error('Помилка відправки листа:', error);
+                            res.json('Помилка відправки листа:', error);
+                    } else {
+                        console.log('Лист відправлено:', info.response);
+                
+
+                        const codePush = db.query(
+                            'INSERT INTO password_resets(user_id, reset_token) VALUES ($1, $2)',
+                            [userId.rows[0].id, randomCode]
+                        );
+
+                        res.json('Лист відправлено');
+                    }
+                });
+
+            } else {
+                console.log("Користувача з таким email не знайдено")
+            }
+        } catch (error) {
+            console.error("Помилка:", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
+
     }
 
 

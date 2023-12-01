@@ -30,3 +30,12 @@ CREATE TABLE homework (
     group_id INTEGER REFERENCES groups(id),
     status VARCHAR(255) DEFAULT 'no'
 );
+
+
+
+
+CREATE TABLE password_resets (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    reset_token VARCHAR(255)
+);

@@ -34,4 +34,6 @@ router.get('/user/getOneGroup/:group_id', userController.getOneGroup);
 router.get('/user/getUsersGroups/:id', userController.getUsersGroups);
 
 
+router.post('/user/forgotPassword', userController.forgotPassword);
+
 module.exports = router;
