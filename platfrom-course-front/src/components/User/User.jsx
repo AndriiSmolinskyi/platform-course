@@ -81,11 +81,7 @@ export const UserPage = () => {
                             name: '',
                         }}
                         validationSchema={validationSchema}
-                        onSubmit={(values) => {
-                            // Додайте префікс +380 до телефону, якщо він не має
-                            const formattedPhone = values.phone.startsWith('+380') ? values.phone : `+380${values.phone}`;
-                            handleChangeUser('phone', { phone: formattedPhone });
-                        }}
+                        onSubmit={(values) =>  handleChangeUser('name', values)}
                         className="user__formik"
                     >
                         <Form className="user__form">
