@@ -229,8 +229,8 @@ class UserConroller{
                 const mailOptions = {
                     from: '4min-IT',
                     to: `${email}`,
-                    subject: 'Код для востановлення пароля',
-                    text: `Ваш код ${randomCode}`
+                    subject: 'Код для скидання пароля лмс 4min-IT',
+                    text: `Ваш код для скидання: ${randomCode} .`
                 };
 
                 
