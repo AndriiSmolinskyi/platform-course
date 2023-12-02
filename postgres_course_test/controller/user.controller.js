@@ -211,9 +211,8 @@ class UserConroller{
 
             if(userId.rows.length > 0){
 
-                const transporter = nodemailer.createTransport({
-                    //service: 'Outlook365', // Эту строчку можете закомментировать, она не нужна
-                    host: 'smtp-mail.outlook.com', // В этой строчке пишите тоже самое что у меня
+                const transporter = nodemailer.createTransport({ 
+                    host: 'smtp-mail.outlook.com', 
                     auth: {
                         user: "fourmin-it@outlook.com",
                         pass: "19911991.Ukraine"
@@ -221,17 +220,35 @@ class UserConroller{
                     secure: false, 
                     requireTLS: true,
                 });
+
+                // const transporter = nodemailer.createTransport({
+                //     host: 'smtp.ethereal.email',
+                //     port: 587,
+                //     auth: {
+                //         user: 'ricardo.christiansen78@ethereal.email',
+                //         pass: 'Up8eZQmtqzaqPWcZKa'
+                //     }
+                // });
         
 
 
                 const randomCode = Math.floor(1000000000 + Math.random() * 9000000000);
 
+                // const mailOptions = {
+                //     from: '4min-IT',
+                //     to: `${email}`,
+                //     subject: 'Код для скидання пароля лмс 4min-IT',
+                //     text: `${email} Ваш код для скидання: ${randomCode} .`
+                // };
+
                 const mailOptions = {
-                    from: '4min-IT',
+                    from: 'fourmin-it@outlook.com',
                     to: `${email}`,
                     subject: 'Код для скидання пароля лмс 4min-IT',
-                    text: `Ваш код для скидання: ${randomCode} .`
+                    text: `${email} Ваш код для скидання: ${randomCode} .`,
+                    html: `<p>${email} Ваш код для скидання: <strong>${randomCode}</strong>.</p>`
                 };
+
 
                 
                 transporter.sendMail(mailOptions, (error, info) => {
@@ -252,6 +269,7 @@ class UserConroller{
                     }
                 });
 
+
             } else {
                 console.log("Користувача з таким email не знайдено")
             }
@@ -261,6 +279,7 @@ class UserConroller{
         }
 
     }
+
 
 
 }
