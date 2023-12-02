@@ -221,30 +221,14 @@ class UserConroller{
                     requireTLS: true,
                 });
 
-                // const transporter = nodemailer.createTransport({
-                //     host: 'smtp.ethereal.email',
-                //     port: 587,
-                //     auth: {
-                //         user: 'ricardo.christiansen78@ethereal.email',
-                //         pass: 'Up8eZQmtqzaqPWcZKa'
-                //     }
-                // });
-        
-
 
                 const randomCode = Math.floor(1000000000 + Math.random() * 9000000000);
 
-                // const mailOptions = {
-                //     from: '4min-IT',
-                //     to: `${email}`,
-                //     subject: 'Код для скидання пароля лмс 4min-IT',
-                //     text: `${email} Ваш код для скидання: ${randomCode} .`
-                // };
 
                 const mailOptions = {
                     from: 'fourmin-it@outlook.com',
                     to: `${email}`,
-                    subject: 'Код для скидання пароля лмс 4min-IT',
+                    subject: 'Код для скидання пароля lms 4min-IT.',
                     text: `${email} Ваш код для скидання: ${randomCode} .`,
                     html: `<p>${email} Ваш код для скидання: <strong>${randomCode}</strong>.</p>`
                 };
