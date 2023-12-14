@@ -6,11 +6,12 @@ import { useNavigate } from "react-router-dom";
 import "../Auth.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { ForgotContext } from "../../../Context/ForgotContext";
+import { useContext } from "react";
 
 const validationSchema = Yup.object().shape({
-    email: Yup.string()
-        .email('Неправильний формат Email')
-        .required('Пошта є обовязковим полем'),
+    codeEmail: Yup.string()
+        .matches(/^\d{10}$/, 'Повинно містити 10 цифр'),
     password: Yup.string()
         .min(7, 'Мінімум 7 символів')
         .max(22, 'Не більше 22 символів')
@@ -22,32 +23,31 @@ const validationSchema = Yup.object().shape({
         .required('Підтвердіть пароль'),
 })
 
-export const Login = () =>{
+export const NewPass = () =>{
+    const { forgot, setForgot } = useContext(ForgotContext)
     const navigation = useNavigate()
 
-    const LoginFunction = async (values) => {
+    const updatePass = async (values) => {
         const hashedPassword = SHA512(values.password).toString();
 
         const body = {
-          email: values.email,
-          password: hashedPassword,
+          email: forgot,
+          code: values.codeEmail,
+          newPass: hashedPassword,
         };
+
+        console.log(body)
       
         try {
-          const response = await axios.post("http://localhost:8080/api/user/login", body);
-          const token = response.data.token
-          localStorage.setItem('userToken', token)
-          navigation('/')
+          const response = await axios.put("http://localhost:8080/api/user/newPass", body);
+          console.log("good")
+          navigation('/login')
         } catch (error) {
-          alert('Помилка при авторизації: невірний пароль, або пошта, або помилка', error.response.data); 
+          alert('Помилка при зміні пароля: невірний код, або помилка', error.response.data); 
         }
     };
 
     const GoBack = () => {
-        navigation('/')
-    }
-
-    const GoForgot = () => {
         navigation('/forgot')
     }
 
@@ -56,28 +56,32 @@ export const Login = () =>{
             
             <Formik
                 initialValues={{
-                    email: '',
+                    codeEmail: '',
                     password: '',
                     confirmPassword: '',
                 }}
                 validationSchema={validationSchema}
                 onSubmit={values =>{
-                    LoginFunction(values)
+                    updatePass(values)
                 }}
                 className="formik"
             >
                 <Form className="form">
                     <div className="form__head">
                         <FontAwesomeIcon icon={faArrowLeft} className="arrow" onClick={GoBack}/>
-                        <h1 className="auth__title">Авторизація</h1>
+                        <h1 className="auth__title">Відновлення пароля</h1>
                     </div>
                     <div className="input-block">
-                        <label htmlFor="email" className="label">Пошта:</label>
-                        <Field type="email" id="email" name="email" className="input"/>
-                        <ErrorMessage name="email" component="div" className="error"/>
+                        <div>Ваша пошта {forgot}</div>
+                        <div>Важлива примітка. Якщо код не прийшов, можливо він знаходиться в спамі.</div>
                     </div>
                     <div className="input-block">
-                        <label htmlFor="password" className="label">Пароль:</label>
+                        <label htmlFor="codeEmail" className="label">Код з пошти:</label>
+                        <Field type="text" id="codeEmail" name="codeEmail" className="input"/>
+                        <ErrorMessage name="codeEmail" component="div" className="error"/>
+                    </div>
+                    <div className="input-block">
+                        <label htmlFor="password" className="label">Новий пароль:</label>
                         <Field type="password" id="password" name="password" className="input"/>
                         <ErrorMessage name="password" component="div" className="error"/>
                     </div>
@@ -86,10 +90,7 @@ export const Login = () =>{
                         <Field type="password" id="confirmPassword" name="confirmPassword" className="input"/>
                         <ErrorMessage name="confirmPassword" component="div" className="error"/>
                     </div>
-                    <div className="input-block">
-                        <div className="some__btn" onClick={GoForgot}>Забули пароль?</div>
-                    </div>
-                    <button type="submit" className="form__btn">Ввійти</button>
+                    <button type="submit" className="form__btn">Змінити пароль</button>
                 </Form>
             </Formik>
         </div>    

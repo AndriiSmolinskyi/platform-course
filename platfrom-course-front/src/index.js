@@ -7,6 +7,7 @@ import { HashRouter } from 'react-router-dom';
 import { UserProvider } from './Context/UserContext';
 import { GroupProvider } from './Context/GroupContext';
 import { HmProvider } from './Context/HmContext';
+import { ForgotProvider } from './Context/ForgotContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,9 +15,11 @@ root.render(
     <UserProvider>
       <GroupProvider>
         <HmProvider>
-          <HashRouter>
-            <App />
-          </HashRouter>
+          <ForgotProvider>
+            <HashRouter>
+              <App />
+            </HashRouter>
+          </ForgotProvider>  
         </HmProvider>
       </GroupProvider>
     </UserProvider>  

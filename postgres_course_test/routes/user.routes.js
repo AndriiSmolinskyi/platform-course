@@ -35,5 +35,6 @@ router.get('/user/getUsersGroups/:id', userController.getUsersGroups);
 
 
 router.post('/user/forgotPassword', userController.forgotPassword);
+router.put('/user/newPass', userController.newPass);
 
 module.exports = router;

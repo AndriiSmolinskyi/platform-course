@@ -5,7 +5,8 @@ import { Start } from './components/Start/Start';
 import { Home } from './components/Home/Home';
 import { UserPage } from './components/User/User';
 import { useNavigate } from 'react-router-dom';
-
+import { Forgot } from './components/auth/forgot/Forgot';
+import { NewPass } from './components/auth/NewPass/NewPass';
 
 function App() {
   
@@ -15,6 +16,8 @@ function App() {
             <Route path='/' element={<Start/>}/>
             <Route path='/register' element={<Register/>}/>
             <Route path='/login' element={<Login/>}/>
+            <Route path='/forgot' element={<Forgot/>}/>
+            <Route path='/newPass' element={<NewPass/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/userPage' element={<UserPage/>}/>
         </Routes>  

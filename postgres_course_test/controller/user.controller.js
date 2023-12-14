@@ -239,17 +239,25 @@ class UserConroller{
 
                     if (error) {
                             console.error('Помилка відправки листа:', error);
-                            res.json('Помилка відправки листа:', error);
+                            return res.status(500).json({ error: 'Помилка відправки листа'});
                     } else {
                         console.log('Лист відправлено:', info.response);
                 
 
                         const codePush = db.query(
-                            'INSERT INTO password_resets(user_id, reset_token) VALUES ($1, $2)',
-                            [userId.rows[0].id, randomCode]
+                            'UPDATE users SET reset_code = $1 WHERE id = $2',
+                            [randomCode, userId.rows[0].id]
                         );
 
                         res.json('Лист відправлено');
+
+                        setTimeout(() => {
+                            const codeRemove = db.query(
+                                'UPDATE users SET reset_code = null WHERE id = $1',
+                                [userId.rows[0].id]
+                            );
+                            console.log('Код скидання пароля видалено після 30 секунд');
+                        }, 150000);
                     }
                 });
 
@@ -262,6 +270,29 @@ class UserConroller{
             res.status(500).json({ error: "Internal Server Error" });
         }
 
+    }
+
+
+    async newPass(req, res) {
+        const { email, code, newPass } = req.body;
+    
+        try {
+            // Перевірка, чи існує користувач з вказаною електронною поштою та кодом
+            const user = await db.query('SELECT * FROM users WHERE email = $1 AND reset_code = $2', [email, code]);
+    
+            if (user.rows.length > 0) {
+                // Якщо користувач та код знайдені, оновіть пароль
+                const updatePassword = await db.query('UPDATE users SET password = $1, reset_code = null WHERE id = $2', [newPass, user.rows[0].id]);
+    
+                res.json('Пароль оновлено успішно');
+            } else {
+                // Якщо користувач або код не знайдені
+                res.status(401).json('Невірна електронна пошта або код скидання пароля');
+            }
+        } catch (error) {
+            console.error("Помилка:", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
     }
 
 

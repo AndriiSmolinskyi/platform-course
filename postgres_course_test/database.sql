@@ -13,6 +13,7 @@ CREATE TABLE users (
     password VARCHAR(255),
     token VARCHAR(255),
     phone VARCHAR(255)
+    reset_code VARCHAR(255)
 );
 
 CREATE TABLE user_groups (
@@ -31,11 +32,3 @@ CREATE TABLE homework (
     status VARCHAR(255) DEFAULT 'no'
 );
 
-
-
-
-CREATE TABLE password_resets (
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(id),
-    reset_token VARCHAR(255)
-);
