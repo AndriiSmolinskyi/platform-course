@@ -7,6 +7,7 @@ import { UserPage } from './components/User/User';
 import { useNavigate } from 'react-router-dom';
 import { Forgot } from './components/auth/forgot/Forgot';
 import { NewPass } from './components/auth/NewPass/NewPass';
+import { Teacher } from './components/teacher/Teacher';
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
             <Route path='/newPass' element={<NewPass/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/userPage' element={<UserPage/>}/>
+            <Route path='/teacher' element={<Teacher/>}/>
         </Routes>  
     </div>
   );
