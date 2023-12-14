@@ -2,6 +2,7 @@
     width: 1170px;
     margin: 0 auto;
     padding: 0px 20px;
+    display: flex;
 }
 
 .teacher__right{
@@ -28,4 +29,9 @@
             border-radius: 10px;
         }
     }
+}
+
+
+.teacher__left{
+    width: 100%;
 }
