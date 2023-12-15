@@ -133,7 +133,7 @@ class UserConroller{
           console.error("Error fetching group members:", error);
           res.status(500).json({ error: "Internal Server Error" });
         }
-      }
+    }
     
     //user auth
 

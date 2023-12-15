@@ -8,7 +8,9 @@ router.put('/user/editHomework', PostController.editHomework);
 router.post('/teacher/postFeedback', PostController.editFeedback);
 router.put('/teacher/editFeedback', PostController.editFeedback);
 router.put('/teacher/editStatus', PostController.editStatus);
-router.post('/teacher/getHomeworkByLessonAndGroup', PostController.getHomeworkByLessonAndGroup);
+
+router.get('/teacher/getHomeworkByGroup/:group_id', PostController.getHomeworkByGroup);
+router.get('/teacher/getHomeworkByLessonAndGroup', PostController.getHomeworkByLessonAndGroup);
 router.get('/teacher/getHomeworkByUserAndLessonAndGroup', PostController.getHomeworkByUserAndLesson); 
 
 module.exports = router;
