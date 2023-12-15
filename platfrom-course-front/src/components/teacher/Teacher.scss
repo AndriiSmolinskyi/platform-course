@@ -34,4 +34,44 @@
 
 .teacher__left{
     width: 100%;
+    padding: 20px;
+}
+
+
+.teacher__arrow{
+    align-self: flex-start;
+    font-size: 20px;
+}
+
+
+.select{
+    width: 200px;
+    height: 45px;
+    font-size: 16px;
+    margin-bottom: 30px;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.groupName__block{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.groupName__block__title{
+    font-size: 20px;
+}
+
+.groupName__block__text{
+    font-size: 18px;
+    font-family: sans-serif;
+    letter-spacing: 0.1rem;
+}
+
+.teacher__title{
+    font-size: 24px;
+    margin-bottom: 30px;
 }

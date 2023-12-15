@@ -118,12 +118,22 @@ class UserConroller{
     
 
     //teacher
-    async getGroupMembers(req, res){
-        const group_id = req.params.group_id
-        const group = await db.query('SELECT * FROM users WHERE group_id = $1', [group_id]);
-        res.json(group.rows[0]);
-    }
 
+    async getGroupMembers(req, res) {
+        const group_id = req.params.group_id;
+      
+        try {
+          const groupMembers = await db.query(
+            'SELECT users.name, users.surname FROM users INNER JOIN user_groups ON users.id = user_groups.user_id WHERE user_groups.group_id = $1',
+            [group_id]
+          );
+      
+          res.json(groupMembers.rows);
+        } catch (error) {
+          console.error("Error fetching group members:", error);
+          res.status(500).json({ error: "Internal Server Error" });
+        }
+      }
     
     //user auth
 

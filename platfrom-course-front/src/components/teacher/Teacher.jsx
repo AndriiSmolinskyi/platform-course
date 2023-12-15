@@ -14,7 +14,7 @@ import { Materials } from "./Materials/Materials";
 
 export const Teacher = () => {
     const { user } = useContext(UserContext)
-    const { group, setGroup } = useContext(GroupContext)
+    const { group } = useContext(GroupContext)
     const [ loading, setLoading ] = useState(false)
     const [ selectedItem, setselectedItem ] = useState(1)
     const navigation = useNavigate()
@@ -39,7 +39,7 @@ export const Teacher = () => {
             <Header></Header>        
             <div className="teacher">                
                 <div className="teacher__right">   
-                    <FontAwesomeIcon icon={faArrowLeft} className="arrow" onClick={GoBack}/>               
+                    <FontAwesomeIcon icon={faArrowLeft} className="teacher__arrow" onClick={GoBack}/>               
                     <div className="teacher__right__item" onClick={() => handleSelectComponent(1)}>Групи</div>
                     <div className="teacher__right__item" onClick={() => handleSelectComponent(2)}>Домашнє завдання</div>
                     <div className="teacher__right__item" onClick={() => handleSelectComponent(3)}>Відкриті уроки</div>
