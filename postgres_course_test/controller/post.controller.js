@@ -52,7 +52,7 @@ class PostController{
         try {
             const homework = await db.query('SELECT * FROM homework WHERE group_id = $1', [group_id]);
             res.json(homework.rows);
-        } catch (error) {
+        } catch (error) {np
           console.error("Error fetching homework:", error);
           res.status(500).json({ error: "Internal Server Error" });
         }
