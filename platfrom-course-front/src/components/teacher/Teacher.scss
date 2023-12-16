@@ -41,6 +41,7 @@
 .teacher__arrow{
     align-self: flex-start;
     font-size: 20px;
+    cursor: pointer;
 }
 
 
@@ -58,20 +59,71 @@
 .groupName__block{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
 .groupName__block__title{
     font-size: 20px;
+    margin-bottom: 30px;
 }
 
 .groupName__block__text{
     font-size: 18px;
     font-family: sans-serif;
-    letter-spacing: 0.1rem;
+    border-bottom: 2px solid rgb(234, 231, 231);
+    padding-bottom: 20px;
 }
 
 .teacher__title{
     font-size: 24px;
     margin-bottom: 30px;
+}
+
+.homework__block{
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgb(234, 231, 231);
+    padding-bottom: 20px;
+    cursor: pointer;
+}
+
+.homework__block__item{
+    font-size: 20px;  
+}
+
+.homework__lesson{
+    width: 30px;
+}
+
+.homework__name{
+    width: 300px;
+}
+
+.homework__data__block{
+    margin-top: 30px;
+}
+
+.reaction__text{
+    margin-bottom: 30px;
+}
+
+.teacher__hm__button{
+    width: 170px;
+    height: 40px;
+    background-color: rgb(146, 231, 109);
+    border-radius: 20px;
+    border: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 30px;
+
+    &:hover{
+        background-color: white;
+        color: rgb(146, 231, 109);
+        border: 2px solid rgb(146, 231, 109);
+    }
 }

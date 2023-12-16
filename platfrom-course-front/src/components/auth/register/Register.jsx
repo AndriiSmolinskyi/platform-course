@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../Auth.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { apiHost } from "../../../apiHost";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -45,7 +46,7 @@ export const Register = () =>{
         };
       
         try {
-          const response = await axios.post("http://localhost:8080/api/user/register", body);
+          const response = await axios.post(`${apiHost}user/register`, body);
           localStorage.setItem('userToken', response.data.token)
           navigation('/')
         } catch (error) {

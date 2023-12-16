@@ -8,7 +8,7 @@ import axios from 'axios';
 import { Loading } from "../Loading/Loading";
 import { useState } from "react";
 import { Header } from "../Header/Header";
-
+import { apiHost } from "../../apiHost";
 
 export const Home = () => {
     const { user } = useContext(UserContext)
@@ -20,10 +20,9 @@ export const Home = () => {
         const user_id = user.id
         try {
             
-            const response = await axios.get(`http://localhost:8080/api/user/getUsersGroups/${user_id}`
+            const response = await axios.get(`${apiHost}user/getUsersGroups/${user_id}`
             );
             const groupData = response.data
-            console.log(response.data)
             setGroup(groupData)
             setLoading(true)
         } catch (error) {

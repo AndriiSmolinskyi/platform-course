@@ -50,9 +50,15 @@ class PostController{
         const group_id = req.params.group_id;
       
         try {
-            const homework = await db.query('SELECT * FROM homework WHERE group_id = $1', [group_id]);
+            const homework = await db.query(`
+            SELECT homework.id, homework.user_id, users.name, users.surname, homework.lesson_number, homework.content, homework.instructor_feedback, homework.group_id, homework.status
+            FROM homework
+            INNER JOIN users ON homework.user_id = users.id
+            WHERE homework.group_id = $1;
+        `, [group_id]);
+
             res.json(homework.rows);
-        } catch (error) {np
+        } catch (error) {
           console.error("Error fetching homework:", error);
           res.status(500).json({ error: "Internal Server Error" });
         }

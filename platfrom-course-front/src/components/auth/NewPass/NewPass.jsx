@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { ForgotContext } from "../../../Context/ForgotContext";
 import { useContext } from "react";
+import { apiHost } from "../../../apiHost";
 
 const validationSchema = Yup.object().shape({
     codeEmail: Yup.string()
@@ -35,11 +36,9 @@ export const NewPass = () =>{
           code: values.codeEmail,
           newPass: hashedPassword,
         };
-
-        console.log(body)
       
         try {
-          const response = await axios.put("http://localhost:8080/api/user/newPass", body);
+          const response = await axios.put(`${apiHost}user/newPass`, body);
           console.log("good")
           navigation('/login')
         } catch (error) {

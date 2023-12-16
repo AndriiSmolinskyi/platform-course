@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../../Context/UserContext";
 import { HmContext } from "../../../Context/HmContext";
 import axios from 'axios';
+import { apiHost } from "../../../apiHost";
 
 export const LessonBtn = ({ lessonId, groupId }) => {
     const { user } = useContext(UserContext);
@@ -34,7 +35,7 @@ export const LessonBtn = ({ lessonId, groupId }) => {
         }
 
         try {            
-            const response = await axios.post(`http://localhost:8080/api/user/sendHomework`, body );
+            const response = await axios.post(`${apiHost}user/sendHomework`, body );
             getHmUser()
         } catch (error) {
             console.error('Помилка при відправкі домашнього завдання', error.response); 
@@ -43,7 +44,7 @@ export const LessonBtn = ({ lessonId, groupId }) => {
 
     const getHmUser = async () => {
         try {            
-            const response = await axios.get(`http://localhost:8080/api/teacher/getHomeworkByUserAndLessonAndGroup`, {
+            const response = await axios.get(`${apiHost}teacher/getHomeworkByUserAndLessonAndGroup`, {
             params: { user_id: user.id, group_id: groupId, lesson_number: lessonId }
         });
             const goodHm = response.data
@@ -61,7 +62,7 @@ export const LessonBtn = ({ lessonId, groupId }) => {
         }
         console.log(homeworkText)
         try {            
-            const response = await axios.put(`http://localhost:8080/api/user/editHomework`, body);
+            const response = await axios.put(`${apiHost}user/editHomework`, body);
             getHmUser()
         } catch (error) {
             console.error('Помилка при редагування домашнього завдання', error.response); 

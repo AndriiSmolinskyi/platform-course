@@ -1,7 +1,5 @@
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../../Context/UserContext"
-import { GroupContext } from "../../Context/GroupContext"
-import { Loading } from "../Loading/Loading";
 import { Header } from "../Header/Header";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -14,8 +12,6 @@ import { Materials } from "./Materials/Materials";
 
 export const Teacher = () => {
     const { user } = useContext(UserContext)
-    const { group } = useContext(GroupContext)
-    const [ loading, setLoading ] = useState(false)
     const [ selectedItem, setselectedItem ] = useState(1)
     const navigation = useNavigate()
 

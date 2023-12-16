@@ -7,6 +7,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from "react";
 import { ForgotContext } from "../../../Context/ForgotContext";
 import axios from 'axios';
+import { apiHost } from "../../../apiHost";
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -26,8 +27,7 @@ export const Forgot = () =>{
 
         try {
             const email = values.email;
-            const response = await axios.post("http://localhost:8080/api/user/forgotPassword", {email});
-            console.log("лист відправлено")
+            const response = await axios.post(`${apiHost}user/forgotPassword`, {email});
             setForgot(values.email)
             navigation('/newPass')
         } catch (error) {

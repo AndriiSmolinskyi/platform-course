@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import "./User.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { apiHost } from "../../apiHost";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -31,7 +32,7 @@ export const UserPage = () => {
         };
 
         try {
-            const response = await axios.put(`http://localhost:8080/api/admin/updateUserAdmin`, body);
+            const response = await axios.put(`${apiHost}admin/updateUserAdmin`, body);
             console.log(response.data);
             const newUser = response.data
             setUser(newUser)

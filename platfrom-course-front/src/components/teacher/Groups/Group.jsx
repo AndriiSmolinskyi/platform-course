@@ -3,6 +3,7 @@ import { GroupContext } from "../../../Context/GroupContext"
 import { Loading } from "../../Loading/Loading";
 import axios from 'axios';
 import "../Teacher.scss";
+import { apiHost } from "../../../apiHost";
 
 export const Group = () => {
     const { group } = useContext(GroupContext);
@@ -11,7 +12,7 @@ export const Group = () => {
 
     const handleGetGroupMember = async (group_id) => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/teacher/getGroupMembers/${group_id}`);
+            const response = await axios.get(`${apiHost}teacher/getGroupMembers/${group_id}`);
             setGroupMembers(response.data);
         } catch (error) {
             console.error("Error fetching group members:", error);
@@ -30,7 +31,7 @@ export const Group = () => {
         <div>
             <h1 className="teacher__title">Групи</h1>
             {group ? (
-                <select onChange={handleGroupChange} value={selectedGroup} className="group__select select">
+                <select onChange={handleGroupChange} value={selectedGroup || ""} className="group__select select">
                     <option value={null} className="select__option">Обрати групу</option>
                     {group.map((groupItem) => (
                     <option key={groupItem.group_id} value={groupItem.group_id} className="select__option">
