@@ -127,3 +127,46 @@
         border: 2px solid rgb(146, 231, 109);
     }
 }
+
+.avai__form{
+    display: flex;
+    gap: 30px;
+}
+
+.avai__btn{
+        cursor: pointer;
+        width: 100px;
+        background-color: rgb(146, 231, 109);
+        color: white;
+        height: 40px;
+        border-radius: 20px;
+        border: none;
+        font-size: 18px;
+        &:hover{
+            border: 2px solid rgb(146, 231, 109);
+            background-color: white;
+            color: rgb(146, 231, 109);
+        }
+}
+
+.avai__input{
+    width: 50px;
+    height: 35px;
+    border-radius: 10px;
+    border: 2px solid rgb(229, 226, 226);
+    padding-left: 10px;
+}
+
+.avai__input:hover,
+.avai__input:focus {
+    border: 2px solid rgb(146, 231, 109);
+    outline: none;
+}
+
+.hm__done{
+    color: green;
+}
+
+.hm__no{
+    color: red;
+}

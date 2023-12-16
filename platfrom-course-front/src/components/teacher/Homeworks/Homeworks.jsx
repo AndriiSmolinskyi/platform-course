@@ -74,7 +74,7 @@ export const Homeworks = () => {
                     <option value={null} className="select__option">Обрати групу</option>
                     {group.map((groupItem) => (
                     <option key={groupItem.group_id} value={groupItem.group_id} className="select__option">
-                        {groupItem.name_group} {groupItem.available_lessons}
+                        {groupItem.name_group}
                     </option>
                     ))}
                 </select>
@@ -90,8 +90,7 @@ export const Homeworks = () => {
                             <div  className="homework__block" onClick={() => setDetailHm(index)}>
                                 <p className="homework__block__item homework__lesson">{member.lesson_number}</p>
                                 <p className="homework__block__item homework__name">{member.name} {member.surname}</p>
-                                <p className="homework__block__item homework__status">{member.status}</p>  
-                                   
+                                {member.status == "done" ? <p className="homework__block__item homework__status hm__done">Перевірено</p> : <p className="homework__block__item homework__status hm__no">Перевіряється</p>}    
                             </div>
                             {detailHm === index && (
                                 <div className="reaction">

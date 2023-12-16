@@ -35,7 +35,7 @@ export const Group = () => {
                     <option value={null} className="select__option">Обрати групу</option>
                     {group.map((groupItem) => (
                     <option key={groupItem.group_id} value={groupItem.group_id} className="select__option">
-                        {groupItem.name_group} {groupItem.available_lessons}
+                        {groupItem.name_group}
                     </option>
                     ))}
                 </select>

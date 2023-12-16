@@ -70,19 +70,18 @@ export const LessonBtn = ({ lessonId, groupId }) => {
         
     }
     
-
-
     useEffect(() => {       
         getHmUser()
     }, [lessonId, groupId]);
-
 
 
     return (
         <div className="hm">
             {hm && hm.map((hmData, index) => (
                 <div key={index}>
-                    <p className="hm__data__text">{hmData.content}</p>
+                    {hmData.status == "done" ? <p className="hm__data__text done">Прийнято</p> : <p className="hm__data__text no">Перевіряється</p>}
+                    <p className="hm__data__text user_hm">{hmData.content}</p>
+                    <p className="hm__data__text feadbeck">Фідбек інструктора</p>
                     <p className="hm__data__text">{hmData.instructor_feedback}</p>
                 </div>
             ))}
