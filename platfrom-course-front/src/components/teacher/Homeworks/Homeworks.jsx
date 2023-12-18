@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { GroupContext } from "../../../Context/GroupContext"
 import { Loading } from "../../Loading/Loading";
 import axios from 'axios';
@@ -10,7 +10,7 @@ export const Homeworks = () => {
     const [ selectedGroup, setSelectedGroup ] = useState(null);
     const [ homeworkData, setHomeworkData ] = useState([]);
     const [ detailHm, setDetailHm ] = useState(null)
-    const [textareaValue, setTextareaValue] = useState('');
+    const [ textareaValue, setTextareaValue ] = useState('');
 
     const handleTextareaChange = (event) => {
         setTextareaValue(event.target.value);
