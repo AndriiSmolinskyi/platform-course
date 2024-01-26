@@ -1,43 +1,66 @@
 import "./Lesson.scss";
+import { LessonBtn } from "./LessonBtn";
 
 export const Lesson42 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
-            <h1 className="title-h1">Випускний.</h1>
+            <h1 className="title-h1">Проект 3.</h1>
             <div className="main-block">
                 <div className="content">
-                    <h3 className="content__title-h3">Привіт, вже без сьогодні дізнаємось, вітаю з випускним!!!!!!</h3>
+                    <h3 className="content__title-h3">Привіт, сьогодні про фінальний проект.</h3>
                 </div>
                 <div className="content">
-                    <h3 className="content__title-h3">Декілька слів від мене.</h3>
+                    <h3 className="content__title-h3">Вимоги до проекту.</h3>
                     <div className="content__block">
-                        <p className="content__paragraph">Вітаю вас з закінченням цього курсу. Це був довгий та непростий шлях, але ви досягли кінця, за що можна і вас похвалити - ви молодці. За цей час ми багато чого дізнались, хтось занурився глибше в програмування, хтось повністю змінив фах, ми найшли нові теплі знаймоства. Бажаю вам гарно рухатись у вашому руслі.</p>
+                        <p className="content__paragraph">1. Створений на React.</p>
+                        <p className="content__paragraph">2. Респонсивність.</p>
+                        <p className="content__paragraph">3. Захостити на любий з хостингів, для прикладу github pages.</p>
+                        <p className="content__paragraph">4. Додаток має бути оптимізованим.</p>
+                        <p className="content__paragraph">5. Тема довільна. Але щоб я хотів бачити в додатку - це routing, formik, context, axios request, user system.</p>
                     </div>
                 </div>
                 <div className="content">
-                    <h3 className="content__title-h3">Чи лишаються матеріали курсу?</h3>
+                    <h3 className="content__title-h3">Кілька ідей.</h3>
                     <div className="content__block">
-                        <p className="content__paragraph">Так всі матеріали в лмс, діскорді, відео залишаються. В лмс матеріали будуть з часом оновлюватись, і зможете бачити щось нове.</p>
+                        <p className="content__paragraph">1. Список завдань (To-Do List):</p>  
+                        <p className="content__paragraph">Створіть додаток для ведення списку завдань.</p>   
+                        <p className="content__paragraph">Додайте можливість додавати, видаляти та відзначати завдання як виконані.</p>             
+                    </div>
+                    <div className="content__block">
+                        <p className="content__paragraph">2. Погода:</p>       
+                        <p className="content__paragraph">Інтегруйте зовнішній API погоди.</p>
+                        <p className="content__paragraph">Відображайте поточну погоду та прогноз на певний період.</p>
+                        <p className="content__paragraph">Додайте можливість вибору місцезнаходження.</p>    
+                    </div>
+                    <div className="content__block">
+                        <p className="content__paragraph">3. Сайт з фільмами:</p>  
+                        <p className="content__paragraph">Інтегруйте зовнішній API фільмів.</p>
+                        <p className="content__paragraph">Додайте оптимізований пошук фільмів.</p>         
+                    </div>
+                    <div className="content__block">
+                        <p className="content__paragraph">4. Онлайн-магазин:</p>      
+                        <p className="content__paragraph">Розробіть простий онлайн-магазин з каталогом товарів.</p> 
+                        <p className="content__paragraph">Додайте можливість додавання товарів у кошик та оформлення замовлення.</p>                           
+                    </div>
+                    <div className="content__block">
+                        <p className="content__paragraph">5. Фінансовий трекер витрат:</p>  
+                        <p className="content__paragraph">Створіть додаток для відстеження фінансових витрат та прибутків.</p> 
+                        <p className="content__paragraph">Додайте можливість додавання та категоризації операцій.</p>          
+                    </div>
+                    <div className="content__block">
+                        <p className="content__paragraph">І ще багато-багато різних ідей.</p>           
                     </div>
                 </div>
                 <div className="content">
-                    <h3 className="content__title-h3">Що далі?</h3>
+                    <h2 className="content__title-h3">Домашнє завдання.</h2>
                     <div className="content__block">
-                        <p className="content__paragraph">Далі буде не менш складний шлях. Рекомендую зайнятись декількома пунктами.</p>  
-                        <p className="content__paragraph">Англійська мова - неймовірно важливий аспект в IT сфері.</p> 
-                        <p className="content__paragraph">Софт скіли - ваші нетехнічні навчки, як от тайм-менеджмент, спілкування... Неменш важливі.</p> 
-                        <p className="content__paragraph">Рекомендую зверстати ще декілька цікавих макетів на стандартному HTML/SCSS/JS.</p>    
-                        <p className="content__paragraph">Зануритись глибше в JS.</p>   
-                        <p className="content__paragraph">Попрактикуватись вдосталь з React. Найбільш вірний варіант буде робити пет-проекти. Ще буде непогано вивчити технології Redux, Next.js, REST API.</p>    
-                        <p className="content__paragraph">Через декілька проектів практики слід братись за оформлення linkedin та створення резюме, не рекомендую тягнути.</p> 
-                        <p className="content__paragraph">Найкращі сайти для того, щоб знайти роботу в Україні: Linkedin, Work, Rabota, Dou, Djinni.</p>      
+                        <p className="content__paragraph">1. Зробити фінальний проект та вчасно здати, бажаю успіхів:).</p>
                     </div>
-                </div>
-                <div className="content">
-                    <h2 className="content__title-h3">Домашнього не буде, бажаю успіхів!</h2>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

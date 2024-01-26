@@ -42,6 +42,7 @@ import Lesson39 from "./allLesson/Lesson39";
 import Lesson40 from "./allLesson/Lesson40";
 import Lesson41 from "./allLesson/Lesson41";
 import Lesson42 from "./allLesson/Lesson42";
+import Lesson43 from "./allLesson/Lesson43";
 import { useContext } from "react";
 import { GroupContext } from "../../Context/GroupContext";
 import { UserContext } from "../../Context/UserContext"
@@ -107,6 +108,7 @@ export const Lesson = (  ) => {
         "React routing.",
         "Formik/yup.",
         "React context.",
+        "PostgreSql, Node.js (два уроки)",
         "Проект 3.",
         "Випускний."
     ];
@@ -179,8 +181,9 @@ export const Lesson = (  ) => {
                         {selectedLesson === 38 && <Lesson38 lessonId={38} groupId={currentGroup}/>}
                         {selectedLesson === 39 && <Lesson39 lessonId={39} groupId={currentGroup}/>}
                         {selectedLesson === 40 && <Lesson40 lessonId={40} groupId={currentGroup}/>}
-                        {selectedLesson === 41 && <Lesson41 lessonId={41} groupId={currentGroup}/>}
+                        {selectedLesson === 41 && <Lesson40 lessonId={41} groupId={currentGroup}/>}
                         {selectedLesson === 42 && <Lesson42 lessonId={42} groupId={currentGroup}/>}
+                        {selectedLesson === 43 && <Lesson43 lessonId={43} groupId={currentGroup}/>}
                     </div>
                 )}
             </div>

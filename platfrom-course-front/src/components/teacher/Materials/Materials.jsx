@@ -42,12 +42,13 @@ import Lesson39 from "../../lessons/allLesson/Lesson39";
 import Lesson40 from "../../lessons/allLesson/Lesson40";
 import Lesson41 from "../../lessons/allLesson/Lesson41";
 import Lesson42 from "../../lessons/allLesson/Lesson42";
+import Lesson43 from "../../lessons/allLesson/Lesson43";
 import Lesson from "../../lessons/Lesson";
 import { useState } from "react";
 import "../Teacher.scss";
 
 export const Materials = () => {
-    const [count, setCount] = useState(42); // доступні уроки
+    const [count, setCount] = useState(43); // доступні уроки
     const [selectedLesson, setSelectedLesson] = useState(1); // вибраний урок
 
     const lessons = [
@@ -91,6 +92,7 @@ export const Materials = () => {
         "React routing.",
         "Formik/yup.",
         "React context.",
+        "PostgreSql, Node.js (два уроки)",
         "Проект 3.",
         "Випускний."
     ];
@@ -159,6 +161,7 @@ export const Materials = () => {
                             {selectedLesson === 40 && <Lesson40 lessonId={40} />}
                             {selectedLesson === 41 && <Lesson41 lessonId={41} />}
                             {selectedLesson === 42 && <Lesson42 lessonId={42} />}
+                            {selectedLesson === 43 && <Lesson43 lessonId={43} />}
                         </div>
                     )}
                 </div>
