@@ -55,7 +55,7 @@ export const Lesson41 = ( {lessonId, groupId} ) => {
                     <div className="content__block">
                         <p className="content__paragraph">Першим етапом створимо базу даних командою create database ім'я_бази_даних;</p>  
                         <p className="content__paragraph">Другим підключимось до бази данних \connect ім'я_бази_даних</p> 
-                        <p className="content__paragraph">Третім етапом створимо наші таблиці командами в терміналі: </p>  
+                        <p className="content__paragraph">Третім етапом створимо наші таблиці командами в терміналі:</p>  
                         <img src={second} alt="#" className="img"/>        
                     </div>
                 </div>
