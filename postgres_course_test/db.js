@@ -2,10 +2,10 @@ const Pool = require('pg').Pool
 
 const pool = new Pool({
     user: "postgres",
-    password: '123456A1z',
+    password: '123456',
     host: "localhost",
     port: 5432,
-    database: "postgres_course_test"
+    database: "postgres_course_back"
 }  
 )
 
