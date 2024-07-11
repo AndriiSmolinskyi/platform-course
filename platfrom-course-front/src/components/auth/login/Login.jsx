@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../Auth.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { apiHost } from "../../../apiHost";
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -34,17 +35,21 @@ export const Login = () =>{
         };
       
         try {
-          const response = await axios.post("http://localhost:8080/api/user/login", body);
+          const response = await axios.post(`${apiHost}user/login`, body);
           const token = response.data.token
           localStorage.setItem('userToken', token)
           navigation('/')
         } catch (error) {
-          console.error('Помилка при авторизації:', error.response.data); 
+          alert('Помилка при авторизації: невірний пароль, або пошта, або помилка', error.response.data); 
         }
     };
 
     const GoBack = () => {
         navigation('/')
+    }
+
+    const GoForgot = () => {
+        navigation('/forgot')
     }
 
     return(
@@ -81,6 +86,9 @@ export const Login = () =>{
                         <label htmlFor="confirmPassword" className="label">Повторити пароль:</label>
                         <Field type="password" id="confirmPassword" name="confirmPassword" className="input"/>
                         <ErrorMessage name="confirmPassword" component="div" className="error"/>
+                    </div>
+                    <div className="input-block">
+                        <div className="some__btn" onClick={GoForgot}>Забули пароль?</div>
                     </div>
                     <button type="submit" className="form__btn">Ввійти</button>
                 </Form>

@@ -7,6 +7,8 @@ import Lesson from "../lessons/Lesson";
 import axios from 'axios';
 import { Loading } from "../Loading/Loading";
 import { useState } from "react";
+import { Header } from "../Header/Header";
+import { apiHost } from "../../apiHost";
 
 export const Home = () => {
     const { user } = useContext(UserContext)
@@ -15,13 +17,14 @@ export const Home = () => {
     const navigate = useNavigate();
 
     const getGroup = async () => {
-        const group_id = user.group_id
+        const user_id = user.id
         try {
             
-            const response = await axios.get(`http://localhost:8080/api/user/getOneGroup/${group_id}`
+            const response = await axios.get(`${apiHost}user/getUsersGroups/${user_id}`
             );
             const groupData = response.data
             setGroup(groupData)
+            setLoading(true)
         } catch (error) {
             console.error('Помилка при отриманні групи:', error.response); 
         }
@@ -35,11 +38,15 @@ export const Home = () => {
         }
     }, [user, navigate]);
 
-    return(
-        <div>
-            {user && (
-               <Lesson></Lesson>
-            )}
-        </div>    
-    )
+    if (loading && group.length > 0 && group[0].available_lessons) {
+        return (
+            <div>
+                <Header></Header>
+                <Lesson></Lesson>
+            </div>
+        );
+    } else {
+        return <Loading>Очікуйте коли вас додадуть до групи, коли вас добавлять до групи</Loading>;
+    }
+
 }

@@ -1,10 +1,10 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import first from "./Lesson40_img/first.png"
 import second from "./Lesson40_img/second.png"
 import three from "./Lesson40_img/three.png"
 
-export const Lesson40 = () => {
+export const Lesson40 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -46,9 +46,10 @@ export const Lesson40 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Створити такий застосунок з акаунтами. Коли користувач заходить на сайт то зявляється три поля імя, пошта, пароль(зробити за допомогою форміка). Коли ми клацнули на кнопку ввійти данні записуються в контекст юзера, і на сторінці хом виводяться імя і пошта юзера. Важливо зазначити що дані повинні зберігатись в localstorage,cookie тощо. Для того, щоб коли користувач після перезавнтаження застосунка з акаунта не виходило. Буде корисно щоб міняти структура роутінга після входу в акаунт, щоб був заблокований роут назад до форми.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

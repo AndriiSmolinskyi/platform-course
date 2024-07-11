@@ -1,7 +1,7 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 
-export const Lesson8 = () => {
+export const Lesson8 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -70,9 +70,10 @@ export const Lesson8 = () => {
                         <p className="content__paragraph">1. Додати ховери на Xbox макет.</p>
                         <p className="content__paragraph">2. Зверстати <a className="link" target="blank" href="https://www.figma.com/community/file/1294305791550357579/simple-shoping-list">Макет</a>.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

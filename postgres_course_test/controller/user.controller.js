@@ -1,5 +1,7 @@
 const db = require('../db')
 const uuid = require('uuid');
+const nodemailer = require('nodemailer');
+const emailInfo = require('./email');
 
 class UserConroller{
 
@@ -36,9 +38,30 @@ class UserConroller{
         res.json(group.rows[0])
     }
 
+    async addUserToGroup(req, res){
+        const {user_id, group_id} = req.body
+        const groupPush = await db.query('INSERT INTO user_groups(user_id, group_id) VALUES($1, $2)', [user_id, group_id]);
+        res.json('Успішно додано до групи')
+    }
+
+    async getUsersGroups(req, res) {
+        const id = req.params.id;
+    
+        try {
+            const userGroups = await db.query(
+                'SELECT user_groups.*, groups.name_group, groups.available_lessons FROM user_groups JOIN groups ON user_groups.group_id = groups.id WHERE user_id = $1',
+                [id]
+            );
+    
+            res.json(userGroups.rows);
+        } catch (error) {
+            console.error('Помилка при отриманні груп користувача:', error);
+            res.status(500).json({ error: 'Помилка сервера' });
+        }
+    }
 
     async updateUserAdmin(req, res) {
-        const { id, name, surname, role, email, group_id, password } = req.body;
+        const { id, name, surname, role, email, phone } = req.body;
     
         let updateFields = [];
         let values = [];
@@ -56,8 +79,7 @@ class UserConroller{
         addUpdateField('surname', surname);
         addUpdateField('role', role);
         addUpdateField('email', email);
-        addUpdateField('group_id', group_id);
-        addUpdateField('password', password);
+        addUpdateField('phone', phone);
     
         if (values.length === 0) {
             return res.status(400).json({ error: "No fields provided for update" });
@@ -65,11 +87,17 @@ class UserConroller{
     
         values.push(id); // id завжди обов'язкове
     
-        const query = `UPDATE users SET ${updateFields.join(', ')} WHERE id = $${paramCount} RETURNING *`;
+        const updateQuery = `UPDATE users SET ${updateFields.join(', ')} WHERE id = $${paramCount}`;
+        const selectQuery = 'SELECT id, name, surname, role, email, token, phone FROM users WHERE id = $1';
     
         try {
-            const user = await db.query(query, values);
-            res.json(user.rows[0]);
+            // Виконуємо запит на оновлення
+            await db.query(updateQuery, values);
+    
+            // Виконуємо запит для отримання оновленого користувача
+            const updatedUser = await db.query(selectQuery, [id]);
+    
+            res.json(updatedUser.rows[0]);
         } catch (error) {
             console.error("Error updating user:", error);
             res.status(500).json({ error: "Internal Server Error" });
@@ -91,17 +119,27 @@ class UserConroller{
     
 
     //teacher
-    async getGroupMembers(req, res){
-        const group_id = req.params.group_id
-        const group = await db.query('SELECT * FROM users WHERE group_id = $1', [group_id]);
-        res.json(group.rows[0]);
-    }
 
+    async getGroupMembers(req, res) {
+        const group_id = req.params.group_id;
+      
+        try {
+          const groupMembers = await db.query(
+            'SELECT users.name, users.surname FROM users INNER JOIN user_groups ON users.id = user_groups.user_id WHERE user_groups.group_id = $1',
+            [group_id]
+          );
+      
+          res.json(groupMembers.rows);
+        } catch (error) {
+          console.error("Error fetching group members:", error);
+          res.status(500).json({ error: "Internal Server Error" });
+        }
+    }
     
     //user auth
 
     async createUser(req, res) {
-        const { name, surname, role, email, group_id, password } = req.body;
+        const { name, surname,  email, password, role } = req.body;
     
         try {
             // Перевірка, чи email вже існує в базі даних
@@ -113,10 +151,10 @@ class UserConroller{
                 const token = uuid.v4(); // Генерація токена
     
                 const user = await db.query(`
-                    INSERT INTO users (name, surname, role, email, group_id, password, token)
-                    VALUES ($1, $2, $3, $4, $5, $6, $7)
+                    INSERT INTO users (name, surname,  email,  password, token, role)
+                    VALUES ($1, $2, $3, $4, $5, $6 )
                     RETURNING *
-                `, [name, surname, role, email, group_id, password, token]);
+                `, [name, surname, email, password, token, role]);
     
                 res.json({token: user.rows[0].token});
             }
@@ -158,7 +196,7 @@ class UserConroller{
     
             await db.query('UPDATE users SET token = $1 WHERE id = $2', [newToken, userId]);
     
-            const user = await db.query('SELECT id, name, surname, role, email, group_id, token FROM users WHERE id = $1', [userId]);
+            const user = await db.query('SELECT id, name, surname, role, email, token, phone FROM users WHERE id = $1', [userId]);
             res.json(user.rows[0]);
         } catch (error) {
             console.error("Error during auto login:", error);
@@ -171,6 +209,103 @@ class UserConroller{
         const user = await db.query('SELECT * FROM users WHERE id = $1', [id]);
         res.json(user.rows[0]);
     }
+
+
+
+
+    async forgotPassword(req, res){
+        const { email } = req.body
+    
+        try {
+            const userId = await db.query('SELECT id FROM users WHERE email = $1', [email]);
+
+            if(userId.rows.length > 0){
+
+                const transporter = nodemailer.createTransport({ 
+                    host: 'smtp-mail.outlook.com', 
+                    auth: {
+                        user: emailInfo.userName,
+                        pass: emailInfo.userPass
+                    },
+                    secure: false, 
+                    requireTLS: true,
+                });
+
+
+                const randomCode = Math.floor(1000000000 + Math.random() * 9000000000);
+
+
+                const mailOptions = {
+                    from: 'fourmin-it@outlook.com',
+                    to: `${email}`,
+                    subject: 'Код для скидання пароля lms 4min-IT.',
+                    text: `${email} Ваш код для скидання: ${randomCode} .`,
+                    html: `<p>${email} Ваш код для скидання: <strong>${randomCode}</strong>.</p>`
+                };
+
+
+                
+                transporter.sendMail(mailOptions, (error, info) => {
+
+                    if (error) {
+                            console.error('Помилка відправки листа:', error);
+                            return res.status(500).json({ error: 'Помилка відправки листа'});
+                    } else {
+                        console.log('Лист відправлено:', info.response);
+                
+
+                        const codePush = db.query(
+                            'UPDATE users SET reset_code = $1 WHERE id = $2',
+                            [randomCode, userId.rows[0].id]
+                        );
+
+                        res.json('Лист відправлено');
+
+                        setTimeout(() => {
+                            const codeRemove = db.query(
+                                'UPDATE users SET reset_code = null WHERE id = $1',
+                                [userId.rows[0].id]
+                            );
+                            console.log('Код скидання пароля видалено після 30 секунд');
+                        }, 150000);
+                    }
+                });
+
+
+            } else {
+                console.log("Користувача з таким email не знайдено")
+            }
+        } catch (error) {
+            console.error("Помилка:", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
+
+    }
+
+
+    async newPass(req, res) {
+        const { email, code, newPass } = req.body;
+    
+        try {
+            // Перевірка, чи існує користувач з вказаною електронною поштою та кодом
+            const user = await db.query('SELECT * FROM users WHERE email = $1 AND reset_code = $2', [email, code]);
+    
+            if (user.rows.length > 0) {
+                // Якщо користувач та код знайдені, оновіть пароль
+                const updatePassword = await db.query('UPDATE users SET password = $1, reset_code = null WHERE id = $2', [newPass, user.rows[0].id]);
+    
+                res.json('Пароль оновлено успішно');
+            } else {
+                // Якщо користувач або код не знайдені
+                res.status(401).json('Невірна електронна пошта або код скидання пароля');
+            }
+        } catch (error) {
+            console.error("Помилка:", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
+    }
+
+
 
 }
 

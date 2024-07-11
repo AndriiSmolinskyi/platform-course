@@ -9,6 +9,7 @@ router.delete('/admin/deleteGroup', userController.deleteGroup);
 router.put('/admin/updateGroupLesson', userController.updateGroupLesson);
 router.get('/admin/getAllGroups', userController.getGroup);
 router.get('/admin/getGroupMembers/:group_id', userController.getGroupMembers);
+router.put('/admin/addUserToGroup', userController.addUserToGroup)
 
 router.put('/admin/updateUserAdmin', userController.updateUserAdmin);
 router.get('/admin/getOneUser/:id', userController.getOneUser);
@@ -30,5 +31,10 @@ router.put('/user/autoLogin', userController.autoLogin);
 router.get('/user/getOneUser/:id', userController.getOneUser);
 router.put('/user/update', userController.updateUserAdmin);
 router.get('/user/getOneGroup/:group_id', userController.getOneGroup);
+router.get('/user/getUsersGroups/:id', userController.getUsersGroups);
+
+
+router.post('/user/forgotPassword', userController.forgotPassword);
+router.put('/user/newPass', userController.newPass);
 
 module.exports = router;

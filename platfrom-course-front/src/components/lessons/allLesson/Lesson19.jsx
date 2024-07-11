@@ -1,5 +1,5 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import first from "./Lesson19_img/first.png"
 import second from "./Lesson19_img/second.png"
 import third from "./Lesson19_img/third.png"
@@ -10,7 +10,7 @@ import seven from "./Lesson19_img/seven.png"
 import eight from "./Lesson19_img/eight.png"
 import nine from "./Lesson19_img/nine.png"
 
-export const Lesson19 = () => {
+export const Lesson19 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -84,9 +84,10 @@ export const Lesson19 = () => {
                         <p className="content__paragraph">2. Створіть програму, яка приймає три числа і виводить їх у порядку спадання.</p>
                         <p className="content__paragraph">3. Розробіть "квест" - програму, де користувач вводить відповіді на різні питання, і в залежності від відповідей він отримує різні "кінцівки" інтерактивного оповідання.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

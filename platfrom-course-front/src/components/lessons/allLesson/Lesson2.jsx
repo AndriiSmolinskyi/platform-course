@@ -1,7 +1,7 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 
-export const Lesson2 = () => {
+export const Lesson2 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -52,9 +52,10 @@ export const Lesson2 = () => {
                         <p className="content__paragraph">1. Ознайомитись добре зі всіма основними тегами.</p>
                         <p className="content__paragraph">2. Створити сторінку есе автобіографію, з місцями роботи, соцмережами і так далі або резюме.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

@@ -1,0 +1,39 @@
+.header{
+    display: flex;
+    max-width: 1170px;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.header__item{
+    font-size: 28px;  
+}
+
+.header__left{
+    cursor: default;
+}
+
+.header__right__icon{
+    cursor: pointer;
+    color: rgb(104, 104, 104);
+}
+
+.header__right__icon:hover{
+    transform: scale(1.1);
+}
+
+.conteiner{
+    width: 100%;
+}
+
+.header__right{
+    display: flex;
+    align-items: center;
+}
+
+.cab__teacher{
+    font-size: 18px;
+    margin-right: 20px;
+    cursor: pointer;
+}

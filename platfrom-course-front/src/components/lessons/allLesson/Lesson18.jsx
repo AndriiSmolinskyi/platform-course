@@ -1,7 +1,7 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 
-export const Lesson18 = () => {
+export const Lesson18 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -65,13 +65,12 @@ export const Lesson18 = () => {
                         <p className="content__paragraph">1. Користувач вводить радіус кола і повинно вивестисть його діаметр, довжину та площу.</p>
                         <p className="content__paragraph">2. Депозит. Користувач вводить якусь кількість грошей під 4% річних. Скільки він отримає за два роки.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }
-//<a className="link" target="blank" href=""></a> 
-// <img src={justify} alt="#" className="img"/>
-// import example1 from "./Lesson14_img/example1.png"
+
 export default Lesson18

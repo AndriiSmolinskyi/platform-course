@@ -7,6 +7,7 @@ import { useContext } from "react";
 import "./Start.scss";
 import logo from "../logo.svg"
 import { Loading } from "../Loading/Loading";
+import { apiHost } from "../../apiHost";
 
 export const Start = () =>{
     const navigation = useNavigate()
@@ -18,7 +19,7 @@ export const Start = () =>{
 
         if(oldToken != null && oldToken !== undefined){
             try {
-                const response = await axios.put("http://localhost:8080/api/user/autoLogin", { token: oldToken });
+                const response = await axios.put(`${apiHost}user/autoLogin`, { token: oldToken });
                 console.log('good')
                 const newToken = response.data.token
                 const newUser = response.data
@@ -57,8 +58,4 @@ export const Start = () =>{
             </div>
       
         )
-    
-        
-                                              
-    
 }

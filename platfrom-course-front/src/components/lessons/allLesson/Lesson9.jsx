@@ -1,9 +1,9 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import justify from './Lesson9__img/justify.png'
 import align from './Lesson9__img/align.webp'
 
-export const Lesson9 = () => {
+export const Lesson9 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -88,9 +88,10 @@ export const Lesson9 = () => {
                         <p className="content__paragraph">1. Зврестати <a className="link" target="blank" href="https://www.figma.com/file/FWbaShhlNmKbS7sQV02bpT/web%3B-Landing-Page-example-(Community)?node-id=1%3A135&mode=dev">Посилання.</a></p>
                         <p className="content__paragraph">2. Пройти гру <a className="link" target="blank" href="https://flexboxfroggy.com/#uk">Посилання.</a></p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

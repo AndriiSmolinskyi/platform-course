@@ -1,10 +1,10 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import first from "./Lesson23_img/first.png"
 import second from "./Lesson23_img/second.png"
 import third from "./Lesson23_img/third.png"
 
-export const Lesson23 = () => {
+export const Lesson23 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -85,13 +85,12 @@ export const Lesson23 = () => {
                         <p className="content__paragraph">2. Видаліть всі об'єкти з масиву, в яких вік менше 30 років.</p>
                         <p className="content__paragraph">3. За допомогою циклу for пройдіться по всіх елементах масиву об'єктів і виведіть на консоль тільки імена.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }
-//<a className="link" target="blank" href=""></a> 
-// <img src={justify} alt="#" className="img"/>
-// import example1 from "./Lesson14_img/example1.png"
+
 export default Lesson23

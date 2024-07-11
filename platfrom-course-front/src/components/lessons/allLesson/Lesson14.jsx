@@ -1,8 +1,8 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import example1 from "./Lesson14_img/example1.png"
 
-export const Lesson14 = () => {
+export const Lesson14 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -41,9 +41,10 @@ export const Lesson14 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати <a className="link" target="blank" href="https://www.figma.com/file/jY5C9ehdB3pbYuMMb6Pd9P/Simply-Home-(Community)?node-id=0%3A1&mode=dev">Макет</a>.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

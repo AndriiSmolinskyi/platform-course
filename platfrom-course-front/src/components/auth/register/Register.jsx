@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../Auth.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { apiHost } from "../../../apiHost";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -41,16 +42,16 @@ export const Register = () =>{
           surname: values.surname,
           role: 'student',
           email: values.email,
-          group_id: null,
           password: hashedPassword,
         };
       
         try {
-          const response = await axios.post("http://localhost:8080/api/user/register", body);
+          const response = await axios.post(`${apiHost}user/register`, body);
           localStorage.setItem('userToken', response.data.token)
           navigation('/')
         } catch (error) {
           console.error('Помилка при реєстрації:', error.response.data); // Змінено
+          alert('Помилка при реєстрації або пошта вже зайнята')
         }
     };
 

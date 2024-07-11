@@ -42,102 +42,153 @@ import Lesson39 from "./allLesson/Lesson39";
 import Lesson40 from "./allLesson/Lesson40";
 import Lesson41 from "./allLesson/Lesson41";
 import Lesson42 from "./allLesson/Lesson42";
+import Lesson43 from "./allLesson/Lesson43";
+import { useContext } from "react";
+import { GroupContext } from "../../Context/GroupContext";
+import { UserContext } from "../../Context/UserContext"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
-export const Lesson = () => {
+export const Lesson = (  ) => {
+    const { user } = useContext(UserContext)
+    const { group, setGroup } = useContext(GroupContext)
+    const [ count, setCount ] = useState(group[0].available_lessons)  //доступні уроки
+    const [ selectedLesson, setSelectedLesson ] = useState(1); //вибраний урок    
+    const [ select, setSelect ] = useState(false); //стан випадайки 
+    const [ currentGroup, setCurrentGroup] = useState(group[0].group_id)
 
-    const [selectedLesson, setSelectedLesson] = useState(1);
+    const handleCheckGroup = (availableLessons, group_id) => {
+        setCount(availableLessons);
+        setCurrentGroup(group_id)
+        setSelect(!select)
+    };
 
-    return(
+    const handleDropcourse = () => {
+        setSelect(!select)
+    }
+
+    const lessons = [
+        "Вступний урок.",
+        "Проект, основа html.",
+        "Git, Github.",
+        "Семантика, посилання, якорі.",
+        "Форми.",
+        "Figma.",
+        "CSS вступ.",
+        "CSS селектори.",
+        "Flexbox.",
+        "Grid.",
+        "Стилізація Форм.",
+        "Препроцесори.",
+        "Адаптивність 1.",
+        "Адаптивність 2.",
+        "Команда верстка.",
+        "Проект 1.",
+        "Основи JavaScript",
+        "Оператори та операнди.",
+        "Умови.",
+        "Цикли.",
+        "Функції.",
+        "Об'єкти.",
+        "Масиви 1.",
+        "Масив 2.",
+        "DOM.",
+        "Події.",
+        "Слайдер.",
+        "AJAX.",
+        "Вебсховище.",
+        "Основи ООП в JavaScript 1.",
+        "Основи ООП в JavaScript 2.",
+        "Ретроспектива.",
+        "Проект 2.",
+        "Вступ до React.",
+        "React state/props.",
+        "Рендеринг списків і умов.",
+        "Axios/useEffect.",
+        "React routing.",
+        "Formik/yup.",
+        "React context.",
+        "PostgreSql, Node.js (два уроки)",
+        "Проект 3.",
+        "Випускний."
+    ];
+
+    const visibleLessons = lessons.slice(0, count);
+
+    return (
         <div className="lesson-main">
+
             <ul className="lesson-list">
-                <li onClick={() => setSelectedLesson(1)} className="lesson-list__item">1. Вступний урок.</li>
-                <li onClick={() => setSelectedLesson(2)} className="lesson-list__item">2. Проект, основа html.</li>
-                <li onClick={() => setSelectedLesson(3)} className="lesson-list__item">3. Git, Github.</li>
-                <li onClick={() => setSelectedLesson(4)} className="lesson-list__item">4. Семантика, посилання, якорі.</li>
-                <li onClick={() => setSelectedLesson(5)} className="lesson-list__item">5. Форми.</li>
-                <li onClick={() => setSelectedLesson(6)} className="lesson-list__item">6. Figma.</li>
-                <li onClick={() => setSelectedLesson(7)} className="lesson-list__item">7. CSS вступ.</li>
-                <li onClick={() => setSelectedLesson(8)} className="lesson-list__item">8. CSS селектори.</li>
-                <li onClick={() => setSelectedLesson(9)} className="lesson-list__item">9. Flexbox.</li>
-                <li onClick={() => setSelectedLesson(10)} className="lesson-list__item">10. Grid.</li>
-                <li onClick={() => setSelectedLesson(11)} className="lesson-list__item">11. Стилізація Форм.</li>
-                <li onClick={() => setSelectedLesson(12)} className="lesson-list__item">12. Препоцесори.</li>
-                <li onClick={() => setSelectedLesson(13)} className="lesson-list__item">13. Адаптивність 1.</li>
-                <li onClick={() => setSelectedLesson(14)} className="lesson-list__item">14. Адаптивність 2.</li>
-                <li onClick={() => setSelectedLesson(15)} className="lesson-list__item">15. Команда верстка.</li>
-                <li onClick={() => setSelectedLesson(16)} className="lesson-list__item">16. Проект 1.</li>
-                <li onClick={() => setSelectedLesson(18)} className="lesson-list__item">18. Оператори та операнди.</li>
-                <li onClick={() => setSelectedLesson(19)} className="lesson-list__item">19. Умови.</li>
-                <li onClick={() => setSelectedLesson(20)} className="lesson-list__item">20. Цикли.</li>
-                <li onClick={() => setSelectedLesson(21)} className="lesson-list__item">21. Функції.</li>
-                <li onClick={() => setSelectedLesson(22)} className="lesson-list__item">22. Обєкти.</li>
-                <li onClick={() => setSelectedLesson(23)} className="lesson-list__item">23. Масиви 1.</li>
-                <li onClick={() => setSelectedLesson(24)} className="lesson-list__item">24. Масив 2.</li>
-                <li onClick={() => setSelectedLesson(25)} className="lesson-list__item">25. DOM.</li>
-                <li onClick={() => setSelectedLesson(26)} className="lesson-list__item">26. Події.</li>
-                <li onClick={() => setSelectedLesson(27)} className="lesson-list__item">27. Слайдер.</li>
-                <li onClick={() => setSelectedLesson(28)} className="lesson-list__item">28. AJAX.</li>
-                <li onClick={() => setSelectedLesson(29)} className="lesson-list__item">29. Вебсховище.</li>
-                <li onClick={() => setSelectedLesson(30)} className="lesson-list__item">30. Основи ООП в JavaScript 1.</li>
-                <li onClick={() => setSelectedLesson(31)} className="lesson-list__item">31. Основи ООП в JavaScript 2.</li>
-                <li onClick={() => setSelectedLesson(32)} className="lesson-list__item">32. Ретроспектива.</li>
-                <li onClick={() => setSelectedLesson(33)} className="lesson-list__item">33. Проект 2.</li>
-                <li onClick={() => setSelectedLesson(34)} className="lesson-list__item">34. Вступ до React.</li>
-                <li onClick={() => setSelectedLesson(35)} className="lesson-list__item">35. React state/props.</li>
-                <li onClick={() => setSelectedLesson(36)} className="lesson-list__item">36. Рендеринг списків і умов.</li>
-                <li onClick={() => setSelectedLesson(37)} className="lesson-list__item">37. Axios/useEffect.</li>
-                <li onClick={() => setSelectedLesson(38)} className="lesson-list__item">38. React routing.</li>
-                <li onClick={() => setSelectedLesson(39)} className="lesson-list__item">39. Formik/yup.</li>
-                <li onClick={() => setSelectedLesson(40)} className="lesson-list__item">40. React context.</li>
-                <li onClick={() => setSelectedLesson(41)} className="lesson-list__item">41. Проект 3.</li>
-                <li onClick={() => setSelectedLesson(42)} className="lesson-list__item">42. Випускний.</li>
+                <h2 onClick={handleDropcourse} className="drop__h2">Мій курс <FontAwesomeIcon icon={faArrowDown} /></h2>
+                {select && group.map((groupItem, index) => (
+                    <li
+                        key={index} 
+                        className="lesson-list__item" 
+                        onClick={() => handleCheckGroup(groupItem.available_lessons, groupItem.group_id)}
+                    >
+                        {groupItem.name_group} {groupItem.available_lessons}
+                    </li>
+                ))}
+
+                {visibleLessons.map((lesson, index) => (
+                        <li key={index} onClick={() => setSelectedLesson(index + 1)} className="lesson-list__item">
+                            {`${index + 1}. ${lesson}`}
+                        </li>
+                ))}
+              
+
             </ul>
             <div className="lesson-content">
-                {selectedLesson === 1 && <Lesson1/>}
-                {selectedLesson === 2 && <Lesson2/>}
-                {selectedLesson === 3 && <Lesson3/>}
-                {selectedLesson === 4 && <Lesson4/>}
-                {selectedLesson === 5 && <Lesson5/>}
-                {selectedLesson === 6 && <Lesson6/>}
-                {selectedLesson === 7 && <Lesson7/>}
-                {selectedLesson === 8 && <Lesson8/>}
-                {selectedLesson === 9 && <Lesson9/>}
-                {selectedLesson === 10 && <Lesson10/>}
-                {selectedLesson === 11 && <Lesson11/>}
-                {selectedLesson === 12 && <Lesson12/>}
-                {selectedLesson === 13 && <Lesson13/>}
-                {selectedLesson === 14 && <Lesson14/>}
-                {selectedLesson === 15 && <Lesson15/>}
-                {selectedLesson === 16 && <Lesson16/>}
-                {selectedLesson === 17 && <Lesson17/>}
-                {selectedLesson === 18 && <Lesson18/>}
-                {selectedLesson === 19 && <Lesson19/>}
-                {selectedLesson === 20 && <Lesson20/>}
-                {selectedLesson === 21 && <Lesson21/>}
-                {selectedLesson === 22 && <Lesson22/>}
-                {selectedLesson === 23 && <Lesson23/>}
-                {selectedLesson === 24 && <Lesson24/>}
-                {selectedLesson === 25 && <Lesson25/>}
-                {selectedLesson === 26 && <Lesson26/>}
-                {selectedLesson === 27 && <Lesson27/>}
-                {selectedLesson === 28 && <Lesson28/>}
-                {selectedLesson === 29 && <Lesson29/>}
-                {selectedLesson === 30 && <Lesson30/>}
-                {selectedLesson === 31 && <Lesson31/>}
-                {selectedLesson === 32 && <Lesson32/>}
-                {selectedLesson === 33 && <Lesson33/>}
-                {selectedLesson === 34 && <Lesson34/>}
-                {selectedLesson === 35 && <Lesson35/>}
-                {selectedLesson === 36 && <Lesson36/>}
-                {selectedLesson === 37 && <Lesson37/>}
-                {selectedLesson === 38 && <Lesson38/>}
-                {selectedLesson === 39 && <Lesson39/>}
-                {selectedLesson === 40 && <Lesson40/>}
-                {selectedLesson === 41 && <Lesson41/>}
-                {selectedLesson === 42 && <Lesson42/>}
+                {selectedLesson <= visibleLessons.length && (
+                    <div>
+                        {selectedLesson === 1 && <Lesson1 lessonId={1} groupId={currentGroup}/>}
+                        {selectedLesson === 2 && <Lesson2 lessonId={2} groupId={currentGroup}/>}
+                        {selectedLesson === 3 && <Lesson3 lessonId={3} groupId={currentGroup}/>}
+                        {selectedLesson === 4 && <Lesson4 lessonId={4} groupId={currentGroup}/>}
+                        {selectedLesson === 5 && <Lesson5 lessonId={5} groupId={currentGroup}/>}
+                        {selectedLesson === 6 && <Lesson6 lessonId={6} groupId={currentGroup}/>}
+                        {selectedLesson === 7 && <Lesson7 lessonId={7} groupId={currentGroup}/>}
+                        {selectedLesson === 8 && <Lesson8 lessonId={8} groupId={currentGroup}/>}
+                        {selectedLesson === 9 && <Lesson9 lessonId={9} groupId={currentGroup}/>}
+                        {selectedLesson === 10 && <Lesson10 lessonId={10} groupId={currentGroup}/>}
+                        {selectedLesson === 11 && <Lesson11 lessonId={11} groupId={currentGroup}/>}
+                        {selectedLesson === 12 && <Lesson12 lessonId={12} groupId={currentGroup}/>}
+                        {selectedLesson === 13 && <Lesson13 lessonId={13} groupId={currentGroup}/>}
+                        {selectedLesson === 14 && <Lesson14 lessonId={14} groupId={currentGroup}/>}
+                        {selectedLesson === 15 && <Lesson15 lessonId={15} groupId={currentGroup}/>}
+                        {selectedLesson === 16 && <Lesson16 lessonId={16} groupId={currentGroup}/>}
+                        {selectedLesson === 17 && <Lesson17 lessonId={17} groupId={currentGroup}/>}
+                        {selectedLesson === 18 && <Lesson18 lessonId={18} groupId={currentGroup}/>}
+                        {selectedLesson === 19 && <Lesson19 lessonId={19} groupId={currentGroup}/>}
+                        {selectedLesson === 20 && <Lesson20 lessonId={20} groupId={currentGroup}/>}
+                        {selectedLesson === 21 && <Lesson21 lessonId={21} groupId={currentGroup}/>}
+                        {selectedLesson === 22 && <Lesson22 lessonId={22} groupId={currentGroup}/>}
+                        {selectedLesson === 23 && <Lesson23 lessonId={23} groupId={currentGroup}/>}
+                        {selectedLesson === 24 && <Lesson24 lessonId={24} groupId={currentGroup}/>}
+                        {selectedLesson === 25 && <Lesson25 lessonId={25} groupId={currentGroup}/>}
+                        {selectedLesson === 26 && <Lesson26 lessonId={26} groupId={currentGroup}/>}
+                        {selectedLesson === 27 && <Lesson27 lessonId={27} groupId={currentGroup}/>}
+                        {selectedLesson === 28 && <Lesson28 lessonId={28} groupId={currentGroup}/>}
+                        {selectedLesson === 29 && <Lesson29 lessonId={29} groupId={currentGroup}/>}
+                        {selectedLesson === 30 && <Lesson30 lessonId={30} groupId={currentGroup}/>}
+                        {selectedLesson === 31 && <Lesson31 lessonId={31} groupId={currentGroup}/>}
+                        {selectedLesson === 32 && <Lesson32 lessonId={32} groupId={currentGroup}/>}
+                        {selectedLesson === 33 && <Lesson33 lessonId={33} groupId={currentGroup}/>}
+                        {selectedLesson === 34 && <Lesson34 lessonId={34} groupId={currentGroup}/>}
+                        {selectedLesson === 35 && <Lesson35 lessonId={35} groupId={currentGroup}/>}
+                        {selectedLesson === 36 && <Lesson36 lessonId={36} groupId={currentGroup}/>}
+                        {selectedLesson === 37 && <Lesson37 lessonId={37} groupId={currentGroup}/>}
+                        {selectedLesson === 38 && <Lesson38 lessonId={38} groupId={currentGroup}/>}
+                        {selectedLesson === 39 && <Lesson39 lessonId={39} groupId={currentGroup}/>}
+                        {selectedLesson === 40 && <Lesson40 lessonId={40} groupId={currentGroup}/>}
+                        {selectedLesson === 41 && <Lesson40 lessonId={41} groupId={currentGroup}/>}
+                        {selectedLesson === 42 && <Lesson42 lessonId={42} groupId={currentGroup}/>}
+                        {selectedLesson === 43 && <Lesson43 lessonId={43} groupId={currentGroup}/>}
+                    </div>
+                )}
             </div>
-        </div>    
-    )
+        </div>
+    );
 }
 
 export default Lesson;

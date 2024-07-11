@@ -1,5 +1,5 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import first from "./Lesson24_img/first.png"
 import second from "./Lesson24_img/second.png"
 import third from "./Lesson24_img/third.png"
@@ -9,7 +9,7 @@ import six from "./Lesson24_img/six.png"
 import seven from "./Lesson24_img/seven.png"
 import eight from "./Lesson24_img/eight.png"
 
-export const Lesson24 = () => {
+export const Lesson24 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -103,9 +103,10 @@ export const Lesson24 = () => {
                         <p className="content__paragraph">2. Створіть масив продукти з об'єктами товарів, де кожен товар має властивості назва та ціна. Використовуючи метод filter(), створіть новий масив дорогіПродукти, який буде містити товари з ціною вище 50. Виведіть дорогіПродукти.</p>
                         <p className="content__paragraph">3. Створіть масив букви з рядком "abcdefg". Використовуючи метод includes(), перевірте, чи міститься літера "c" в масиві букви та виведіть результат.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

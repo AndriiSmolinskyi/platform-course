@@ -1,10 +1,10 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import first from "./Lesson38_img/first.png"
 import second from "./Lesson38_img/second.png"
 import three from "./Lesson38_img/three.png"
 
-export const Lesson0 = () => {
+export const Lesson0 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -37,9 +37,10 @@ export const Lesson0 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Створити веб-застосунок, де зверху буде хедер і можна буде ним ходити по різним сторінкам. Як ідея можна зробити типу магазину. Перша сторінка Home. Далі About, Cart, Like, Orders.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

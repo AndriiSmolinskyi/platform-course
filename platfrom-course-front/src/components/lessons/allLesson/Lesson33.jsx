@@ -1,7 +1,7 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 
-export const Lesson33 = () => {
+export const Lesson33 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -33,9 +33,10 @@ export const Lesson33 = () => {
                         <p className="content__paragraph">1. <a className="link" target="blank" href="https://www.figma.com/file/4otmSsCgxxB1BXHr2W1rnV/Responsive%2FComponents-Landing-Page---Construction-Company-(Community)?node-id=34%3A205&mode=dev">Посилання</a>.</p>
                         <p className="content__paragraph">2. <a className="link" target="blank" href="https://www.figma.com/file/suymW76wwXAqTKeevmGv30/Analytics-%E2%80%94-Landing-Page-Design-(Community)?node-id=1%3A178&mode=dev">Посилання</a>.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

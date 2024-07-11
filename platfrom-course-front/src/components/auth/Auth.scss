@@ -86,9 +86,19 @@
         border: none;
         font-size: 18px;
         &:hover{
-            opacity: 0.8;
+            border: 2px solid rgb(146, 231, 109);
+            background-color: white;
+            color: rgb(146, 231, 109);
         }
     }
 }
 
 
+.some__btn{
+    cursor: pointer;
+    
+
+    &:hover{
+        text-decoration: underline;
+    }
+}

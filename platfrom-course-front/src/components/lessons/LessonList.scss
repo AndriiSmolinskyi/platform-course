@@ -4,11 +4,12 @@
     display: flex;
     justify-content: space-between;
     .lesson-list{
-        border-right: 2px solid rgb(234, 231, 231);
+        
         padding: 20px;
         display: flex;
         flex-direction: column;
         gap: 20px;
+
 
         .lesson-list__item{
             cursor: pointer; 
@@ -16,18 +17,21 @@
             white-space: nowrap; /* Забороняємо тексту переходити на новий рядок */
             overflow: hidden;     /* Приховуємо текст, який виходить за межі блоку */
             text-overflow: ellipsis; /* Відображаємо троє крапок для обрізаного тексту */ 
-            padding: 10px;    
+            padding: 15px;    
             display: flex;  
-            align-items: center;
-            // border-bottom: 1px solid rgb(234, 231, 231);
+            align-items: center;  
         }
 
         .lesson-list__item:hover{
-            border: 1px solid rgb(234, 231, 231);
+            border: 2px solid rgb(234, 231, 231);
             border-radius: 10px;
         }
     }
 }
+
+
+
+
 
 @media (max-width: 768px) {
     .lesson-main {
@@ -38,4 +42,9 @@
 
 .lesson-content{
     max-width: 900px;
+}
+
+.drop__h2{
+    cursor: pointer;
+    font-size: 22px;
 }

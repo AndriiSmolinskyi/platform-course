@@ -1,10 +1,10 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import first from "./Lesson35_img/first.png"
 import second from "./Lesson35_img/second.png"
 import three from "./Lesson35_img/three.png"
 
-export const Lesson0 = () => {
+export const Lesson0 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -37,9 +37,10 @@ export const Lesson0 = () => {
                         <p className="content__paragraph">1. Створити компонент, який відображає статус виконання завдання.</p>
                         <p className="content__paragraph">2. Створіть компонент UserProfile, який отримує props з даними про користувача (ім'я, електронну пошту, статус). Виведіть ці дані на сторінці, включаючи значок статусу (наприклад, онлайн або офлайн). Додайте можливість редагування цих даних за допомогою кнопки "Редагувати"..</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                  
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

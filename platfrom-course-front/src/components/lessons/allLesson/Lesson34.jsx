@@ -1,12 +1,12 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import first from "./Lesson34_img/first.png"
 import second from "./Lesson34_img/second.png"
 import three from "./Lesson34_img/three.png"
 import four from "./Lesson34_img/four.png"
 import five from "./Lesson34_img/five.png"
 
-export const Lesson34 = () => {
+export const Lesson34 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -68,9 +68,10 @@ export const Lesson34 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати семантичний шаблон компонентним підходом React.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

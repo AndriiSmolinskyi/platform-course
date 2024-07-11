@@ -1,5 +1,5 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import fir from "./Lesson10__img/fir.jpg"
 import sec from "./Lesson10__img/sec.jpg"
 import third from "./Lesson10__img/third.jpg"
@@ -7,7 +7,7 @@ import four from "./Lesson10__img/four.jpg"
 import fifth from "./Lesson10__img/fifth.jpg"
 import six from "./Lesson10__img/six.jpg"
 
-export const Lesson10 = () => {
+export const Lesson10 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -58,9 +58,10 @@ export const Lesson10 = () => {
                     <div className="content__block">
                         <p className="content__paragraph">1. Зверстати макет <a className="link" target="blank" href="https://www.figma.com/file/BkA5l6sBB37kXEi3FxNlot/Gallery-(Community)?type=design&node-id=0%3A1&mode=design&t=ronwYpFR5pV4OJxs-1">Gallery</a>.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }

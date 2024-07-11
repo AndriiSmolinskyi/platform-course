@@ -1,11 +1,11 @@
 import "./Lesson.scss";
-import { LessonBtn } from "../LessonBtn";
+import { LessonBtn } from "./LessonBtn";
 import first from "./Lesson20_img/first.png"
 import second from "./Lesson20_img/second.png"
 import three from "./Lesson20_img/three.png"
 import four from "./Lesson20_img/four.png"
 
-export const Lesson20 = () => {
+export const Lesson20 = ( {lessonId, groupId} ) => {
 
     return(
         <div className="lesson-block">
@@ -58,9 +58,10 @@ export const Lesson20 = () => {
                         <p className="content__paragraph">2. Створіть програму, яка обчислює суму всіх простих чисел в заданому діапазоні.</p>
                         <p className="content__paragraph">3. Розробіть "гру вгадай число", де програма обирає випадкове число від 1 до 100, а користувач повинен вгадати його. Програма надає підказки про те, чи число більше чи менше введеного користувачем.</p>
                     </div>
-                    <LessonBtn></LessonBtn>
+                    
                 </div>
             </div>
+            <LessonBtn lessonId={lessonId} groupId={groupId}></LessonBtn>
         </div>    
     )
 }
